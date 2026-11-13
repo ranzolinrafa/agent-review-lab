@@ -52,6 +52,6 @@ representar uma política de crédito de produção.
 
 - [Guia do projeto](docs/project/guide.md): objetivo, escopo e milestones.
 - [Progresso](docs/project/progress.md): estado atual e próxima ação.
-- [Metodologia](docs/instructions/methodology.md): aprendizado, implementação e revisão.
+- [Instruções do agente](docs/instructions/agent-instructions.md): aprendizado, implementação e revisão.
 - [Instruções para ADRs](docs/instructions/adrs.md): registro de decisões arquiteturais.
 - [Orientações para agentes](AGENTS.md): contexto e referências para colaboração.

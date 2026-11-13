@@ -1,7 +1,7 @@
 # Agent Review Lab — guia do projeto
 
 Objetivo, escopo e roteiro do projeto. Para conduzir o trabalho, consultar
-as [instruções de metodologia](../instructions/methodology.md); para retomar,
+as [instruções do agente](../instructions/agent-instructions.md); para retomar,
 o [progresso](progress.md) e o [AGENTS.md](../../AGENTS.md).
 
 ## Objetivo e resultado esperado
@@ -328,7 +328,7 @@ não é automática nem condiciona o funcionamento local do MVP.
 | -------------------- | ----------------------------------------------------------- |
 | `AGENTS.md`          | Contexto do projeto e referências condicionais.             |
 | `docs/project/`      | Escopo e roteiro neste guia; estado atual em `progress.md`. |
-| `docs/instructions/` | Metodologia de trabalho e política de ADRs.                 |
+| `docs/instructions/` | Instruções de atuação e política de ADRs.                   |
 | `docs/concepts/`     | Fundamentos das tecnologias e notas de aprendizado.         |
 | `docs/system/`       | Funcionamento, fluxos e contratos específicos da aplicação. |
 | `docs/adr/`          | Decisões arquiteturais e suas justificativas.               |

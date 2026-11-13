@@ -17,8 +17,8 @@ O contexto durável fica nos documentos deste repositório.
 
 ## Início de sessão
 
-Antes de conduzir qualquer tarefa, ler integralmente o guia do projeto, a
-metodologia e o progresso, referenciados na tabela abaixo, nessa ordem.
+Antes de conduzir qualquer tarefa, ler integralmente o guia do projeto, as
+instruções do agente e o progresso, referenciados na tabela abaixo, nessa ordem.
 Essa leitura inicial é obrigatória; não depende do tipo da primeira solicitação.
 
 Na primeira resposta, indicar brevemente o estado atual e a ação que será tratada,
@@ -32,15 +32,15 @@ Após a leitura inicial obrigatória, consultar somente as seções pertinentes 
 tarefa, sem reler conteúdo já disponível e atualizado no contexto. A tabela é uma
 instrução de consulta, não um mecanismo de carregamento automático.
 
-| Quando ler                                                              | O que consultar                                      | Referência                                                                                    |
-| ----------------------------------------------------------------------- | ---------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| Ao iniciar sessão; ao discutir escopo, planejar ou implementar um passo | Objetivo, limites e milestone pertinente             | [Guia do projeto](docs/project/guide.md)                                                      |
-| Ao iniciar sessão; antes de conduzir um passo                           | Didática, concordância, implementação e revisão      | [Metodologia](docs/instructions/methodology.md)                                               |
-| Ao iniciar ou retomar sessão                                            | Milestone, passo autorizado, pendências e checkpoint | [Progresso](docs/project/progress.md)                                                         |
-| Antes de propor ou alterar decisão arquitetural                         | Critérios, formato e aprovação                       | [Instruções de ADRs](docs/instructions/adrs.md)                                               |
-| Ao definir cenários ou implementar testes                               | Camada adequada, recap e TDD seletivo                | [Testes](docs/instructions/methodology.md#testes)                                             |
-| Ao identificar ponto de commit                                          | Conventional Commits, revisão e aprovação            | [Git](docs/instructions/methodology.md#git)                                                   |
-| Ao encerrar passo ou sessão                                             | Resultado, validações, impedimentos e próxima ação   | [Retomada](docs/instructions/methodology.md#retomada) e [progresso](docs/project/progress.md) |
+| Quando ler                                                              | O que consultar                                      | Referência                                                                                           |
+| ----------------------------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| Ao iniciar sessão; ao discutir escopo, planejar ou implementar um passo | Objetivo, limites e milestone pertinente             | [Guia do projeto](docs/project/guide.md)                                                             |
+| Ao iniciar sessão; antes de conduzir um passo                           | Didática, concordância, implementação e revisão      | [Instruções do agente](docs/instructions/agent-instructions.md)                                      |
+| Ao iniciar ou retomar sessão                                            | Milestone, passo autorizado, pendências e checkpoint | [Progresso](docs/project/progress.md)                                                                |
+| Antes de propor ou alterar decisão arquitetural                         | Critérios, formato e aprovação                       | [Instruções de ADRs](docs/instructions/adrs.md)                                                      |
+| Ao definir cenários ou implementar testes                               | Camada adequada, recap e TDD seletivo                | [Testes](docs/instructions/agent-instructions.md#testes)                                             |
+| Ao identificar ponto de commit                                          | Conventional Commits, revisão e aprovação            | [Git](docs/instructions/agent-instructions.md#git)                                                   |
+| Ao encerrar passo ou sessão                                             | Resultado, validações, impedimentos e próxima ação   | [Retomada](docs/instructions/agent-instructions.md#retomada) e [progresso](docs/project/progress.md) |
 
 Quando houver conteúdo em `docs/concepts/` (fundamentos), `docs/system/` (fluxos e
 contratos da aplicação) e `docs/adr/` (decisões), adicionar referências condicionais

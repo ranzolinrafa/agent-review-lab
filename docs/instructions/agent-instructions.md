@@ -1,4 +1,4 @@
-# Metodologia de desenvolvimento guiado
+# Instruções do agente de desenvolvimento
 
 ## Ciclo de cada passo
 
@@ -81,6 +81,11 @@ explicar o conteúdo e sugerir mensagem; aguardar aprovação após revisão do 
 Inicialização de Git, commit, repositório remoto e push são ações separadas.
 
 ## Retomada
+
+Ao encerrar uma tarefa importante, apresentar um resumo do status do projeto em
+uma ou duas frases: milestone atual (com nome), resultado relevante, próximo passo
+e eventual impedimento ou aprovação pendente. Não repetir esse resumo para cada
+pequeno ajuste editorial.
 
 Manter a tabela de [progresso](../project/progress.md) como retrato atual: milestone,
 estado, resultado relevante, próxima ação, autorização e pendências. Atualizar as
