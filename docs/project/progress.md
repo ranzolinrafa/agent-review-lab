@@ -5,11 +5,10 @@ Atualizado em: 2026-11-13.
 | Campo         | Situação atual                                                             |
 | ------------- | -------------------------------------------------------------------------- |
 | Milestone     | M0 (Consolidar a descoberta em documentação).                              |
-| Estado        | README e ajustes documentais revisados e aprovados.                        |
-| Concluído     | Escopo, roteiro, metodologia e política de ADRs definidos.                 |
-| Publicação    | Commit bf64ad8 em main; repositório público ranzolinrafa/agent-review-lab. |
+| Estado        | Concluído; documentação revisada e publicada.                              |
+| Concluído     | Escopo, roteiro, metodologia, política de ADRs e README definidos.         |
+| Publicação    | Commit 08dade2 em main; repositório público ranzolinrafa/agent-review-lab. |
 | Implementação | Sem aplicação ou dependências instaladas. Git e origin configurados.       |
-| Conexão       | Plugin GitHub e CLI com acesso ao repositório confirmado.                  |
-| Próximo passo | Publicar alterações documentais mediante autorização.                      |
-| Continuidade  | Mediante autorização, iniciar M1 (Visão conceitual do sistema).            |
-| Pendências    | Publicação das alterações locais; escrita em .git liberada e validada.     |
+| Conexão       | Plugin GitHub e CLI validados; commit e push executados com sucesso.       |
+| Próximo passo | Aguardar autorização para iniciar M1 (Visão conceitual do sistema).        |
+| Pendências    | Nenhum impedimento para iniciar o próximo milestone.                       |
