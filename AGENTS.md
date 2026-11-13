@@ -15,22 +15,32 @@ já domina React, TypeScript e tem experiência com Node/Express; as tecnologias
 novas serão ensinadas desde os fundamentos, antes da implementação.
 O contexto durável fica nos documentos deste repositório.
 
+## Início de sessão
+
+Antes de conduzir qualquer tarefa, ler integralmente o guia do projeto, a
+metodologia e o progresso, referenciados na tabela abaixo, nessa ordem.
+Essa leitura inicial é obrigatória; não depende do tipo da primeira solicitação.
+
+Na primeira resposta, indicar brevemente o estado atual e a ação que será tratada,
+respeitando o checkpoint e a autorização registrados no progresso.
+Não reler os três documentos a cada mensagem enquanto estiverem disponíveis e
+atualizados no contexto. As demais referências são consultadas conforme a tarefa.
+
 ## Referências por situação
 
-Consultar a referência quando a condição ocorrer, antes da ação correspondente.
-Ler somente as seções pertinentes; não reler conteúdo já disponível e atualizado
-no contexto nem carregar todos os documentos por padrão. A tabela é uma instrução
-de consulta, não um mecanismo de carregamento automático.
+Após a leitura inicial obrigatória, consultar somente as seções pertinentes à
+tarefa, sem reler conteúdo já disponível e atualizado no contexto. A tabela é uma
+instrução de consulta, não um mecanismo de carregamento automático.
 
-| Quando ler                                                | O que consultar                                      | Referência                                                                                    |
-| --------------------------------------------------------- | ---------------------------------------------------- | --------------------------------------------------------------------------------------------- |
-| Ao iniciar ou retomar sessão                              | Milestone, passo autorizado, pendências e checkpoint | [Progresso](docs/project/progress.md)                                                         |
-| Antes de conduzir passo de aprendizado ou desenvolvimento | Didática, concordância, implementação e revisão      | [Metodologia](docs/instructions/methodology.md)                                               |
-| Ao discutir escopo, planejar ou implementar um passo      | Objetivo, limites e milestone pertinente             | [Guia do projeto](docs/project/guide.md)                                                      |
-| Antes de propor ou alterar decisão arquitetural           | Critérios, formato e aprovação                       | [Instruções de ADRs](docs/instructions/adrs.md)                                               |
-| Ao definir cenários ou implementar testes                 | Camada adequada, recap e TDD seletivo                | [Testes](docs/instructions/methodology.md#testes)                                             |
-| Ao identificar ponto de commit                            | Conventional Commits, revisão e aprovação            | [Git](docs/instructions/methodology.md#git)                                                   |
-| Ao encerrar passo ou sessão                               | Resultado, validações, impedimentos e próxima ação   | [Retomada](docs/instructions/methodology.md#retomada) e [progresso](docs/project/progress.md) |
+| Quando ler                                                              | O que consultar                                      | Referência                                                                                    |
+| ----------------------------------------------------------------------- | ---------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| Ao iniciar sessão; ao discutir escopo, planejar ou implementar um passo | Objetivo, limites e milestone pertinente             | [Guia do projeto](docs/project/guide.md)                                                      |
+| Ao iniciar sessão; antes de conduzir um passo                           | Didática, concordância, implementação e revisão      | [Metodologia](docs/instructions/methodology.md)                                               |
+| Ao iniciar ou retomar sessão                                            | Milestone, passo autorizado, pendências e checkpoint | [Progresso](docs/project/progress.md)                                                         |
+| Antes de propor ou alterar decisão arquitetural                         | Critérios, formato e aprovação                       | [Instruções de ADRs](docs/instructions/adrs.md)                                               |
+| Ao definir cenários ou implementar testes                               | Camada adequada, recap e TDD seletivo                | [Testes](docs/instructions/methodology.md#testes)                                             |
+| Ao identificar ponto de commit                                          | Conventional Commits, revisão e aprovação            | [Git](docs/instructions/methodology.md#git)                                                   |
+| Ao encerrar passo ou sessão                                             | Resultado, validações, impedimentos e próxima ação   | [Retomada](docs/instructions/methodology.md#retomada) e [progresso](docs/project/progress.md) |
 
 Quando houver conteúdo em `docs/concepts/` (fundamentos), `docs/system/` (fluxos e
 contratos da aplicação) e `docs/adr/` (decisões), adicionar referências condicionais
