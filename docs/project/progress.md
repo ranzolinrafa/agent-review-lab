@@ -2,12 +2,14 @@
 
 Atualizado em: 2026-11-13.
 
-| Campo         | Situação atual                                                                                                                                                                                        |
-| ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Milestone     | M0 (Consolidar a descoberta em documentação).                                                                                                                                                           |
-| Estado        | Documentação pronta; publicação autorizada pelo fluxo híbrido oficial (plugin GitHub e CLI).                                                                                                            |
-| Concluído     | Escopo, roteiro, metodologia e política de ADRs definidos. Plugin oficial instalado, habilitado e conectado à conta ranzolinrafa.                                                                         |
-| Implementação | Nenhuma aplicação ou dependência instalada; Git ainda não inicializado. Primeiro commit e publicação não executados.                                                                                    |
-| Próximo passo | Resolver acesso local ao Git e autenticação/rede do gh; criar o commit documental e o repositório público ranzolinrafa/agent-review-lab, com publicação já autorizada.                                   |
-| Continuidade  | Mediante autorização, iniciar M1 (Visão conceitual do sistema).                                                                                                                                          |
-| Pendências    | git init bloqueado por permissão de escrita em .git nesta sessão. gh informa credencial inválida; acesso à API falhou na tentativa anterior. Plugin não expõe criação de repositório; consulta retornou 404. |
+| Campo         | Situação atual                                                             |
+| ------------- | -------------------------------------------------------------------------- |
+| Milestone     | M0 (Consolidar a descoberta em documentação).                              |
+| Estado        | README e ajustes documentais revisados e aprovados.                        |
+| Concluído     | Escopo, roteiro, metodologia e política de ADRs definidos.                 |
+| Publicação    | Commit bf64ad8 em main; repositório público ranzolinrafa/agent-review-lab. |
+| Implementação | Sem aplicação ou dependências instaladas. Git e origin configurados.       |
+| Conexão       | Plugin GitHub e CLI com acesso ao repositório confirmado.                  |
+| Próximo passo | Publicar alterações documentais mediante autorização.                      |
+| Continuidade  | Mediante autorização, iniciar M1 (Visão conceitual do sistema).            |
+| Pendências    | Publicação das alterações locais; escrita em .git liberada e validada.     |

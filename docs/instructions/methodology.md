@@ -22,8 +22,9 @@ usadas; revisar outros conceitos dessas tecnologias quando solicitado.
 
 - Nomes de arquivos/diretórios, código, testes e commits em en-US; conteúdo
   documental, explicações e PRs em pt-BR. Preservar nomes como `AGENTS.md`.
-- Alinhar colunas de tabelas Markdown para leitura no editor e na renderização,
-  inclusive nas respostas.
+- Sempre formatar todas as tabelas Markdown criadas ou alteradas, inclusive nas
+  respostas: alinhar as colunas e os separadores `|` com espaços, ajustar a linha
+  de cabeçalho e conferir o alinhamento no texto-fonte antes de concluir a edição.
 - Citar milestones pelo identificador seguido do nome entre parênteses, usando
   os nomes do guia, em documentos e respostas.
 - Registrar somente o que ajuda a compreender o projeto, uma decisão ou a próxima

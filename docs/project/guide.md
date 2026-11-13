@@ -324,14 +324,14 @@ não é automática nem condiciona o funcionamento local do MVP.
 
 ## Organização dos documentos
 
-| Local                | Responsabilidade                                               |
-| -------------------- | -------------------------------------------------------------- |
-| `AGENTS.md`          | Contexto do projeto e referências condicionais.                |
-| `docs/project/`      | Escopo e roteiro neste guia; estado atual em `progress.md`.    |
-| `docs/instructions/` | Metodologia de trabalho e política de ADRs.                    |
-| `docs/concepts/`     | Fundamentos das tecnologias e notas de aprendizado.            |
-| `docs/system/`       | Funcionamento, fluxos e contratos específicos da aplicação.    |
-| `docs/adr/`          | Decisões arquiteturais e suas justificativas.                  |
+| Local                | Responsabilidade                                            |
+| -------------------- | ----------------------------------------------------------- |
+| `AGENTS.md`          | Contexto do projeto e referências condicionais.             |
+| `docs/project/`      | Escopo e roteiro neste guia; estado atual em `progress.md`. |
+| `docs/instructions/` | Metodologia de trabalho e política de ADRs.                 |
+| `docs/concepts/`     | Fundamentos das tecnologias e notas de aprendizado.         |
+| `docs/system/`       | Funcionamento, fluxos e contratos específicos da aplicação. |
+| `docs/adr/`          | Decisões arquiteturais e suas justificativas.               |
 
 Criar conteúdo conforme o estudo e as decisões, organizado por assunto. Fluxos e
 contratos têm fonte única em `docs/system/`; notas e ADRs podem referenciá-los.
