@@ -73,6 +73,23 @@ importante; não é obrigatório declarar todas as opções.
 `node_modules` e `dist` dessa seleção inicial. Isso não constitui uma barreira de
 imports: arquivos importados podem integrar a análise mesmo fora dessa seleção.
 
+## Configurações da web
+
+O template oficial do Vite separa os ambientes em três arquivos:
+
+- `tsconfig.json`: coordena as referências aos dois projetos abaixo.
+- `tsconfig.app.json`: abrange `src`, com declarações de DOM, tipos do cliente Vite
+  e configuração JSX para React, correspondendo ao código do navegador.
+- `tsconfig.node.json`: abrange `vite.config.ts`, com tipos de Node e resolução
+  de módulos apropriada às ferramentas executadas na máquina.
+
+O script `build` executa `tsc -b`, que segue essas referências e verifica os
+projetos antes de Vite gerar os arquivos de saída. Os arquivos de informação
+incremental do compilador ficam em `node_modules/.tmp`, fora do versionamento.
+O TypeScript 7 habilita `strict` por padrão, mesmo quando o template não o declara.
+Não compartilhar automaticamente o tsconfig da API: navegador e runtime do
+servidor disponibilizam APIs diferentes.
+
 ## Referências
 
 - [TypeScript com Bun](https://bun.com/docs/runtime/typescript).

@@ -11,29 +11,40 @@ documentados.
 
 O repositório contém a documentação do projeto e a configuração mínima de Bun
 workspaces para `apps/web` e `apps/api`. A API tem o ponto de entrada mínimo e a
-configuração TypeScript revisada a partir do template de `bun init`; a web ainda
-tem apenas seu manifesto.
-Ainda não há servidor HTTP ou página web.
+configuração TypeScript revisada a partir do template de `bun init`. A web executa
+o template oficial React + TypeScript do Vite, com a página original e o contador.
+A API ainda não atende HTTP e a web ainda não consulta o backend.
 
 Consulte o [progresso](docs/project/progress.md) para o checkpoint atual e o
 [guia do projeto](docs/project/guide.md) para o roteiro completo.
 
 ## Verificar a configuração atual
 
-Com Bun 1.4.4 disponível, execute na raiz:
+O ambiente verificado utiliza Bun 1.4.4 e Node 24.15.0. Bun gerencia os pacotes e
+executa a API; o CLI do Vite usa Node. Execute na raiz:
 
 ```sh
 bun install --frozen-lockfile
 bun run --filter @agent-review-lab/api typecheck
 bun run apps/api/index.ts
+bun run --filter @agent-review-lab/web build
+bun run --filter @agent-review-lab/web lint
 bun pm ls --all
 ```
 
 A instalação deve concluir sem alterar o lockfile e a verificação de tipos deve
 passar. O ponto de entrada imprime `Hello via Bun!` e encerra; ele ainda não atende
 requisições HTTP. A listagem identifica os dois workspaces e as dependências
-instaladas para a API. Consulte o [README da API](apps/api/README.md) para os
-detalhes do scaffold e da próxima revisão.
+instaladas. O build da web também verifica tipos; o lint original usa Oxlint,
+que será substituído por Biome no passo previsto. Para abrir a página:
+
+```sh
+bun run --filter @agent-review-lab/web dev
+```
+
+Acesse o endereço informado pelo Vite, normalmente `http://localhost:5173/`, e
+encerre com `Ctrl+C`. Consulte os READMEs da [API](apps/api/README.md) e da
+[web](apps/web/README.md) para os comandos e detalhes de cada aplicação.
 
 ## Experiência planejada
 

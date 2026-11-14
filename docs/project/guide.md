@@ -203,10 +203,12 @@ implementação, validação e revisão independentes em cada passo:
    estática e validar um ponto de entrada mínimo.
 4. **Inicialização da web:** usar o template oficial React + TypeScript do Vite;
    inspecionar os arquivos originais, explicar TypeScript do frontend e as demais
-   configurações antes de executar e validar a página mínima.
+   configurações antes de executar e validar a página padrão do template. O
+   exemplo original com contador é suficiente para este milestone; não é
+   necessário substituí-lo por uma página `Hello World!`.
 5. **Servidor HTTP:** criar uma rota GET inicial com resposta `Hello World!`,
    servindo também como verificação técnica de saúde, e consultar sua resposta.
-6. **Biome:** substituir a configuração de ESLint trazida pelo template e verificar
+6. **Biome:** substituir a configuração de lint trazida pelo template e verificar
    formatação e análise estática.
 7. **Execução conjunta e comunicação:** disponibilizar um script na raiz que inicie
    web e API; explicar portas e origens, configurar o proxy de desenvolvimento e
@@ -238,8 +240,8 @@ conforme o [ciclo de cada passo](../instructions/agent-instructions.md#ciclo-de-
 build da web e execução de web/API/comunicação local, conforme introduzidos.
 
 **Aceite:** um script na raiz inicia as duas aplicações; API responde `Hello World!`
-por GET; página web acessível no navegador apresenta `Hello World!` e consulta a API;
-comandos documentados e verificações passando. Usuário revisa os resultados e
+por GET; página padrão do Vite acessível no navegador, com contador funcional e
+consulta à API exibida na interface; comandos documentados e verificações passando. Usuário revisa os resultados e
 sinaliza compreensão das configurações e workspaces, sem avaliação. Sem regras ou
 telas de crédito. Nunca executar a lista inteira sem checkpoints entre os passos.
 

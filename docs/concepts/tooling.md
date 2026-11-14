@@ -1,13 +1,26 @@
 # Ferramentas de apoio
 
-Papéis revisados no M1 (Visão conceitual do sistema), sem configurações definidas.
+Papéis introduzidos no M1 (Visão conceitual do sistema), com configuração
+progressiva no M2 (Estrutura e ambiente, um passo por vez).
 
 ## Desenvolvimento
 
 Vite fornece o servidor de desenvolvimento da web e gera seu build. Esse servidor
 entrega a interface ao navegador; a API Bun recebe operações e executa o trabalho
 do sistema. TypeScript verifica tipos; gerar um build não substitui a checagem
-estática. Configuração no M2 (Estrutura e ambiente, um passo por vez).
+estática; o script `build` do template React + TypeScript executa `tsc -b` antes de
+`vite build`, combinando as duas verificações no mesmo comando.
+
+O `index.html` é a entrada explícita da web. Ele referencia `main.tsx`, que monta
+React e renderiza `App.tsx`. No desenvolvimento, Vite transforma os módulos sob
+demanda e os entrega ao navegador, sem exigir `dist` pronto. O build gera os
+arquivos de saída, e `preview` os serve para conferência local.
+
+O nome `dev` não determina esse comportamento: ele é um script do manifesto.
+No template atual, `dev` chama `vite`. Bun aciona o script respeitando o runtime
+indicado pelo executável; foi verificado que Vite roda em Node, enquanto React
+roda no navegador. Forçar o runtime Bun para o CLI exigiria uma escolha explícita,
+que não foi adotada.
 
 ## Interface
 
@@ -23,6 +36,8 @@ operações da API. Introdução no M4 (Solicitações e backoffice básico).
 ## Qualidade e testes
 
 Biome cuidará de formatação e lint, enquanto TypeScript fará a verificação de tipos.
+O template atual do Vite trouxe Oxlint, preservado para inspeção antes da
+substituição no passo de Biome; não foi uma nova escolha permanente de ferramenta.
 O formatador padroniza a apresentação do código; o linter aponta padrões
 problemáticos conforme as regras configuradas e pode oferecer correções.
 Essas verificações não comprovam o comportamento das regras da aplicação.
