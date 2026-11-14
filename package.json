@@ -2,5 +2,15 @@
   "name": "agent-review-lab",
   "private": true,
   "packageManager": "bun@1.4.4",
-  "workspaces": ["apps/*"]
+  "workspaces": [
+    "apps/*"
+  ],
+  "devDependencies": {
+    "@biomejs/biome": "2.6.7"
+  },
+  "scripts": {
+    "check": "biome check .",
+    "check:fix": "biome check --write .",
+    "format": "biome format --write ."
+  }
 }

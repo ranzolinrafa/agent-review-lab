@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "bun --watch index.ts",
     "start": "bun index.ts",
-    "typecheck": "bun check"
+    "typecheck": "bun --check",
+    "check": "biome check ."
   },
   "devDependencies": {
     "@types/bun": "1.4.4",
