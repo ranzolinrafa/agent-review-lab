@@ -87,15 +87,17 @@ Ao concluir um milestone revisado e aprovado pelo usuário:
 1. Atualizar o status na tabela de milestones e o checkpoint em
    [progresso](../project/progress.md), removendo pendências resolvidas.
 2. Conferir as alterações e executar as verificações pertinentes.
-3. Criar o commit de encerramento, incluindo o progresso atualizado, sem pedir
-   nova confirmação para o commit.
-4. Informar o resultado e o próximo passo, aguardando alinhamento antes de iniciar
+3. Apresentar o conteúdo e a mensagem do commit de encerramento, incluindo o
+   progresso atualizado, e aguardar autorização explícita antes de criar o commit.
+4. Antes de fazer push, apresentar o que será enviado e aguardar autorização
+   explícita para o envio. Autorizar commit não autoriza push.
+5. Informar o resultado e o próximo passo, aguardando alinhamento antes de iniciar
    o milestone seguinte.
 
-Essa autorização é permanente para commits de encerramento de milestones.
-Para pontos de commit intermediários, explicar o conteúdo e sugerir mensagem;
-aguardar aprovação após revisão do passo. Inicialização de Git, repositório remoto
-e push continuam sendo ações separadas, sem autorização automática.
+Sempre confirmar com o usuário antes de executar commit ou push, inclusive em
+encerramentos de milestones e pontos intermediários. Aprovar um passo ou concluir
+um milestone não autoriza essas ações automaticamente. Inicialização de Git e
+configuração de repositório remoto também são ações separadas.
 
 ## Retomada
 
