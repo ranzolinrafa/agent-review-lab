@@ -1,9 +1,9 @@
 # Visão geral do sistema
 
 Visão conceitual revisada no M1 (Visão conceitual do sistema).
-Descreve o fluxo de crédito previsto, ainda não implementado. A fundação executável
-do M2 (Estrutura e ambiente, um passo por vez) está descrita em
-[Desenvolvimento local](local-development.md).
+Descreve o fluxo de crédito previsto, ainda não implementado. Os comandos da
+fundação executável do M2 (Estrutura e ambiente, um passo por vez) estão no
+[README](../../README.md).
 
 ## Fluxo completo do caminho feliz
 

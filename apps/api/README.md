@@ -17,8 +17,8 @@ inexistentes respondem `404`. O processo permanece ativo aguardando requisiçõe
 `@types/bun` 1.4.4 e TypeScript 7.0.2 são dependências de desenvolvimento com
 versões explícitas. A configuração foi revisada para a API no
 M2 (Estrutura e ambiente, um passo por vez), preservando as verificações de rigor
-e removendo opções desnecessárias do template. Consulte os
-[fundamentos de TypeScript](../../docs/concepts/typescript.md) para as justificativas.
+e removendo opções desnecessárias do template. As opções efetivas estão no
+`tsconfig.json` da aplicação.
 
 As exclusões do Git ficam somente no `.gitignore` da raiz; o arquivo local
 sugerido pelo gerador foi removido por decisão aprovada.
@@ -47,9 +47,8 @@ curl -i http://127.0.0.1:3000/
 curl -i http://127.0.0.1:3000/inexistente
 ```
 
-Confira status `200` com `Hello World!` e `404` com `Not Found`. O contrato e o
-encaminhamento pela web estão em
-[Desenvolvimento local](../../docs/system/local-development.md).
+Confira status `200` com `Hello World!` e `404` com `Not Found`. A
+[web](../web/README.md#consulta-à-api) acessa a rota inicial pelo proxy do Vite.
 
 `check` chama o Biome instalado na raiz, abrangendo somente a API. `typecheck`
 usa `bun --check`, sem arquivo de entrada, para verificar tipos sem executar o

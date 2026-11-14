@@ -57,6 +57,15 @@ usadas; revisar outros conceitos dessas tecnologias quando solicitado.
   Não documentar automaticamente toda explicação; registrar dúvidas somente quando
   a resposta ajudar a compreender, implementar ou retomar o projeto, ou por pedido
   do usuário.
+- Antes de criar um arquivo documental, julgar se há valor durável para o projeto,
+  explicar o que precisa ser preservado e por que os documentos existentes não
+  bastam; aguardar concordância explícita do usuário antes de criá-lo. Isso vale
+  para notas conceituais, guias, especificações, ADRs e READMEs. A concordância pode
+  abranger um conjunto delimitado de arquivos apresentado na proposta.
+- Preferir explicações na conversa para fundamentos simples ou facilmente
+  consultáveis nas referências oficiais. Não criar uma nota por tecnologia ou
+  etapa. Manter instruções essenciais de instalação, execução e verificação nos
+  READMEs, evitando documentos paralelos para o mesmo assunto.
 
 ## Impedimentos e checkpoints
 

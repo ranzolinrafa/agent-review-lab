@@ -56,9 +56,9 @@ conferência local; `dev` trabalha a partir dos fontes, sem exigir build prévio
 ## Consulta à API
 
 Para o fluxo completo, prefira `bun run dev` na raiz: ele inicia web e API.
-Clique em **Consultar API** e confira `Hello World!`. O contrato e a reescrita
-do caminho pelo proxy estão em
-[Desenvolvimento local](../../docs/system/local-development.md).
+Clique em **Consultar API** e confira `Hello World!`. A web consulta `/api/`, e
+o proxy do Vite encaminha para `http://127.0.0.1:3000/`, removendo o prefixo
+`/api`. O build estático não contém esse servidor de desenvolvimento.
 
 Para conferir erro e recuperação, encerre o comando conjunto e inicie somente a
 web com seu script `dev`. Clique no botão e observe a mensagem de erro. Em outro
@@ -70,6 +70,6 @@ respectivos terminais.
 
 `index.html` referencia `src/main.tsx`, que conecta React ao elemento `root`
 e renderiza `App.tsx`. Vite transforma os módulos TSX em JavaScript para o
-navegador. A configuração de TypeScript separa a aplicação do navegador das
-ferramentas executadas na máquina; consulte os
-[fundamentos de TypeScript](../../docs/concepts/typescript.md).
+navegador. `tsconfig.app.json` configura a aplicação do navegador;
+`tsconfig.node.json`, as ferramentas executadas na máquina. `tsconfig.json`
+coordena as duas configurações.

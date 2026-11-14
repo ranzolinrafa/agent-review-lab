@@ -172,8 +172,9 @@ antecipado do M2 (Estrutura e ambiente, um passo por vez), sem execução autom�
 4. Desenhar fluxo entre navegador, API, memória e eventos.
 5. Introduzir monorepo e FSD conceitualmente, sem configurar suas partes internas.
 
-**Registro:** produzir notas de fundamentos em `docs/concepts/` e registrar a
-visão específica da aplicação em `docs/system/`, conforme estudarmos cada assunto.
+**Registro:** propor notas de fundamentos em `docs/concepts/` e registros da
+visão específica da aplicação em `docs/system/` somente quando houver valor
+durável, criando novos documentos após concordância do usuário.
 Por exemplo, `docs/concepts/agents.md` explica agentes e seus conceitos;
 `docs/system/overview.md` descreve o mapa da aplicação e seu fluxo de dados.
 São destinos previstos, não arquivos a preencher antecipadamente. Usar exemplos,
@@ -372,7 +373,8 @@ não é automática nem condiciona o funcionamento local do MVP.
 | `docs/system/`       | Funcionamento, fluxos e contratos específicos da aplicação. |
 | `docs/adr/`          | Decisões arquiteturais e suas justificativas.               |
 
-Criar conteúdo conforme o estudo e as decisões, organizado por assunto. Fluxos e
+Criar conteúdo conforme o estudo e as decisões, organizado por assunto e seguindo
+o critério de necessidade e concordância das instruções do agente. Fluxos e
 contratos têm fonte única em `docs/system/`; notas e ADRs podem referenciá-los.
 Este guia é a especificação inicial; detalhar comportamentos antes de implementá-los.
 

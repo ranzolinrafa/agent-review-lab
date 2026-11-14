@@ -41,8 +41,7 @@ curl -i http://127.0.0.1:3000/inexistente
 ```
 
 As duas primeiras consultas retornam `200` e `Hello World!`; a última retorna
-`404` e `Not Found`. O [fluxo local](docs/system/local-development.md) explica
-processos, rotas, proxy e tratamento de erro.
+`404` e `Not Found`. O proxy do Vite encaminha `/api/` para a rota `/` da API.
 
 ## Verificações
 
@@ -109,7 +108,6 @@ representar uma política de crédito de produção.
 ## Documentação
 
 - [Fluxo completo e visão do sistema](docs/system/overview.md): caminho dos dados da criação à decisão humana.
-- [Desenvolvimento local](docs/system/local-development.md): processos e contrato HTTP implementados.
 - [Decisão de organização](docs/adr/0001-monorepo-with-bun-workspaces.md): monorepo e inicialização das aplicações.
 - [Índice de conceitos](docs/concepts/README.md): fundamentos das tecnologias e organização do código.
 - [Guia do projeto](docs/project/guide.md): objetivo, escopo e milestones.

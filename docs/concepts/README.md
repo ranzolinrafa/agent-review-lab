@@ -11,7 +11,5 @@ Adicionar novas referências aqui conforme os conceitos forem estudados.
 | Ao estudar acompanhamento em tempo real e comparar transportes                | SSE, EventSource, polling, WebSocket e relação com o cache                                                                  | [Server-Sent Events](server-sent-events.md)         |
 | Ao organizar os projetos ou estudar a estrutura do frontend                   | Monorepo, FSD, layers, slices, segments e integração com a API                                                              | [Organização do código](code-organization.md)       |
 | Ao situar ferramentas de desenvolvimento, interface e testes                  | Vite, Tailwind, Radix, Biome e divisão dos testes entre web, API e jornada integrada                                        | [Ferramentas de apoio](tooling.md)                  |
-| Ao configurar TypeScript ou distinguir execução e análise estática            | Bun check, tsc, tipos do ambiente e justificativas das opções da API                                                        | [TypeScript: execução e verificação](typescript.md) |
-| Ao estudar HTTP, portas, origens, proxy ou execução conjunta                  | Requisição/resposta, processos separados e coordenação de scripts                                                           | [Desenvolvimento local](local-development.md)       |
 
 Os fluxos específicos da aplicação ficam em [docs/system/](../system/).

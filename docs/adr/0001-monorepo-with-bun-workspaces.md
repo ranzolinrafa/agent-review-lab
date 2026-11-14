@@ -109,4 +109,5 @@ O Bun reconheceu os dois workspaces. Instalação congelada, comandos individuai
 qualidade, tipos e build passaram também em uma worktree limpa. O script conjunto
 iniciou as aplicações e encerrou seus processos com `Ctrl+C`.
 
-O funcionamento atual está em [Desenvolvimento local](../system/local-development.md).
+Os comandos atuais estão no [README da raiz](../../README.md) e nos READMEs da
+[API](../../apps/api/README.md) e da [web](../../apps/web/README.md).
