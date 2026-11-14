@@ -10,7 +10,7 @@ O escopo e os critérios de aceite de cada milestone estão no [guia do projeto]
 | -------------------------------------------- | ------------ |
 | M0 (Consolidar a descoberta em documentação) | Concluído    |
 | M1 (Visão conceitual do sistema)             | Concluído    |
-| M2 (Estrutura e ambiente, um passo por vez)  | Não iniciado |
+| M2 (Estrutura e ambiente, um passo por vez)  | Em andamento |
 | M3 (Primeira comunicação tipada)             | Não iniciado |
 | M4 (Solicitações e backoffice básico)        | Não iniciado |
 | M5 (Execução simulada e histórico)           | Não iniciado |
@@ -20,14 +20,14 @@ O escopo e os critérios de aceite de cada milestone estão no [guia do projeto]
 
 ## Checkpoint atual
 
-| Campo         | Situação atual                                                                                                                                   |
-| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Milestone     | M1 (Visão conceitual do sistema).                                                                                                                |
-| Estado        | Concluído; visão geral e documentação revisadas e aprovadas pelo usuário.                                                                        |
-| Concluído     | Caminho feliz, tecnologias, monorepo/FSD e testes revisados. Vitest + Testing Library na web; Bun test na API; Playwright integrado.             |
-| Publicação    | Encerramento do M1 (Visão conceitual do sistema) em main; repositório público ranzolinrafa/agent-review-lab.                                     |
-| Implementação | Sem aplicação ou dependências instaladas. Git e origin configurados.                                                                             |
-| Próximo passo | Alinhar o primeiro passo do M2 (Estrutura e ambiente, um passo por vez): definir e criar somente as pastas mínimas.                              |
-| Autorização   | Commit e push deste encerramento autorizados. Início do próximo milestone depende de alinhamento.                                                |
-| Foco          | Entender criação, listagem, detalhe, análise simulada, recomendação e decisão humana; comparar executor determinístico e agente com IA no fluxo. |
-| Pendências    | Nenhum impedimento. Próximo milestone ainda não iniciado.                                                                                        |
+| Campo         | Situação atual                                                                                                                                                |
+| ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Milestone     | M2 (Estrutura e ambiente, um passo por vez).                                                                                                                  |
+| Estado        | Plano revisado após entrevista e aprovado; passo de workspaces em explicação, antes da implementação.                                                         |
+| Concluído     | Pastas mínimas criadas. Bun 1.4.4 executado por caminho absoluto e em zsh interativo; registro npm acessível por HTTPS (HTTP 200 via curl).                   |
+| Publicação    | Encerramento do M1 (Visão conceitual do sistema) em main; repositório público ranzolinrafa/agent-review-lab.                                                  |
+| Implementação | Estrutura inicial sem código de aplicação ou dependências instaladas. Git e origin configurados.                                                              |
+| Próximo passo | Alinhar e implementar somente os manifests mínimos e exclusões do Git; verificar os workspaces e aguardar reprodução e aprovação do usuário.                  |
+| Autorização   | Plano e commit documental aprovados. Implementação de workspaces depende de concordância; sem autorização para tag ou push.                                   |
+| Foco          | Concluir a fundação conforme o roteiro do guia, compreendendo cada configuração; agente e usuário verificam cada checkpoint antes do avanço.                  |
+| Pendências    | Shell não interativo do agente ainda não encontra Bun no PATH; usar o caminho absoluto verificado. Instalação de dependências ainda não exercitada.           |

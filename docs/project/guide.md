@@ -187,25 +187,55 @@ fundação. Sem perguntas de avaliação ou implementação da aplicação.
 
 **Propósito:** entender organização, instalação e execução dos projetos.
 
-Cada item é um passo independente com explicação e revisão:
+Preparação já realizada: pastas mínimas criadas, Git inicializado, Bun disponível
+e acesso ao registro npm diagnosticado. Resolver impedimentos antes de prosseguir.
 
-1. Definir e criar somente as pastas mínimas.
-2. Diagnosticar disponibilidade do Bun e acesso ao registro de dependências.
-3. Discutir e resolver impedimentos antes de prosseguir.
-4. Verificar o Git inicializado após a revisão do M0 (Consolidar a descoberta em documentação) e configurar as exclusões
-   pertinentes. Se a inicialização ainda estiver pendente, discuti-la em passo próprio.
-5. Explicar manifests, dependências e workspaces; configurar monorepo.
-6. Introduzir TypeScript nos dois ambientes e justificar suas opções.
-7. Configurar Vite e página React mínima.
-8. Criar servidor Bun mínimo e verificação técnica de saúde.
-9. Configurar Biome e comandos básicos de qualidade.
-10. Explicar origem, portas e comunicação local; configurar e verificar o
-    encaminhamento necessário entre web e API.
+Sequência aprovada após alinhamento do objetivo, com explicação, concordância,
+implementação, validação e revisão independentes em cada passo:
 
-**Validação:** instalação e lockfile, tipos, checks disponíveis, build da web e
-smoke de web/API/comunicação local, conforme introduzidos.
+1. **Workspaces:** explicar manifests, dependências e coordenação pela raiz;
+   configurar os manifests mínimos e as exclusões pertinentes do Git; verificar
+   o reconhecimento das aplicações pelo Bun.
+2. **Inicialização da API:** usar o template vazio de `bun init` e inspecionar os
+   arquivos gerados antes de adaptá-los. Identificar configurações de assuntos
+   seguintes, explicando-as antes de depender delas.
+3. **TypeScript da API:** justificar as opções, distinguir execução de verificação
+   estática e validar um ponto de entrada mínimo.
+4. **Inicialização da web:** usar o template oficial React + TypeScript do Vite;
+   inspecionar os arquivos originais, explicar TypeScript do frontend e as demais
+   configurações antes de executar e validar a página mínima.
+5. **Servidor HTTP:** criar uma rota GET inicial com resposta `Hello World!`,
+   servindo também como verificação técnica de saúde, e consultar sua resposta.
+6. **Biome:** substituir a configuração de ESLint trazida pelo template e verificar
+   formatação e análise estática.
+7. **Execução conjunta e comunicação:** disponibilizar um script na raiz que inicie
+   web e API; explicar portas e origens, configurar o proxy de desenvolvimento e
+   fazer a web consultar e exibir a resposta da API por HTTP simples. tRPC fica no
+   M3 (Primeira comunicação tipada).
+8. **Revisão final:** verificar instalação reproduzível, lockfile, tipos, qualidade,
+   build e funcionamento integrado; finalizar instruções e notas pertinentes;
+   revisar a ADR da organização, distinguindo decisões retrospectivas.
 
-**Aceite:** aplicações mínimas executando e comandos documentados, sem regras ou
+**Aprendizado e checkpoints:** usar a experiência com Yarn workspaces como referência;
+explicar declaração de dependências, resolução de versões, lockfile, cache global,
+estratégia de instalação e links. Inspecionar a estrutura física quando houver
+pacotes instalados. Revisar TypeScript sem pressupor experiência de configuração
+no backend. Não acrescentar ferramentas para antecipar milestones seguintes.
+
+O agente executa e explica as verificações, depois fornece todos os comandos do
+checkpoint juntos, com os resultados esperados, para o usuário reproduzir antes
+de aprovar o avanço. Corrigir ajustes simples dentro do passo autorizado e explicar
+na revisão; problemas complexos ou soluções que alterem o plano exigem discussão
+antes da ação. Instalação malsucedida continua exigindo análise conjunta, conforme
+as instruções do agente.
+
+**Validação:** instalação reproduzível e lockfile, verificação de tipos, Biome,
+build da web e execução de web/API/comunicação local, conforme introduzidos.
+
+**Aceite:** um script na raiz inicia as duas aplicações; API responde `Hello World!`
+por GET; página web acessível no navegador apresenta `Hello World!` e consulta a API;
+comandos documentados e verificações passando. Usuário revisa os resultados e
+sinaliza compreensão das configurações e workspaces, sem avaliação. Sem regras ou
 telas de crédito. Nunca executar a lista inteira sem checkpoints entre os passos.
 
 ### M3 (Primeira comunicação tipada)
