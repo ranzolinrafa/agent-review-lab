@@ -14,6 +14,32 @@ a documentação. Cada aplicação terá manifesto, dependências e comandos pr�
 Bun workspaces ajudará a administrá-las a partir da raiz. A configuração será
 estudada no M2 (Estrutura e ambiente, um passo por vez).
 
+## Manifests e instalação com Bun workspaces
+
+O `package.json` da raiz declara `workspaces: ["apps/*"]`. Cada diretório
+selecionado que contém um manifesto com nome identifica um projeto do conjunto.
+Cada aplicação declara suas próprias dependências e scripts quando introduzidos;
+a raiz pode declarar ferramentas comuns e comandos de coordenação.
+
+`private: true` impede publicar o pacote no registro, sem controlar a visibilidade
+do repositório Git. `packageManager: "bun@1.4.4"` registra a ferramenta esperada;
+esse campo não instala o executável. O prefixo `@agent-review-lab/` agrupa os nomes
+dos pacotes locais, sem exigir cadastro de organização no npm.
+
+`bun install` na raiz resolve o conjunto e produz o `bun.lock` compartilhado.
+O manifesto declara as dependências desejadas; o lockfile registra suas resoluções.
+`bun install --frozen-lockfile` exige que a instalação respeite o lockfile existente,
+sem atualizá-lo. Ambos os arquivos são versionados; `node_modules` é gerado e fica
+fora do Git.
+
+No checkpoint inicial do M2 (Estrutura e ambiente, um passo por vez), os manifests
+ainda não declaram dependências externas. `bun pm ls` identifica os workspaces
+locais registrados no lockfile; essa listagem não prova que já existam pacotes
+externos ou links físicos para cada aplicação. A organização da instalação e o
+cache serão inspecionados quando houver dependências instaladas.
+
+Referência: [Workspaces do Bun](https://bun.com/docs/pm/workspaces).
+
 ## Layers, slices e segments
 
 FSD é uma metodologia de organização do frontend por responsabilidades e assuntos

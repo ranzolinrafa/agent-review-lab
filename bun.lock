@@ -1,0 +1,20 @@
+{
+  "lockfileVersion": 2,
+  "configVersion": 1,
+  "workspaces": {
+    "": {
+      "name": "agent-review-lab",
+    },
+    "apps/api": {
+      "name": "@agent-review-lab/api",
+    },
+    "apps/web": {
+      "name": "@agent-review-lab/web",
+    },
+  },
+  "packages": {
+    "@agent-review-lab/api": ["@agent-review-lab/api@workspace:apps/api"],
+
+    "@agent-review-lab/web": ["@agent-review-lab/web@workspace:apps/web"],
+  }
+}

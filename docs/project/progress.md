@@ -23,11 +23,11 @@ O escopo e os critérios de aceite de cada milestone estão no [guia do projeto]
 | Campo         | Situação atual                                                                                                                                                |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Milestone     | M2 (Estrutura e ambiente, um passo por vez).                                                                                                                  |
-| Estado        | Plano revisado após entrevista e aprovado; passo de workspaces em explicação, antes da implementação.                                                         |
-| Concluído     | Pastas mínimas criadas. Bun 1.4.4 executado por caminho absoluto e em zsh interativo; registro npm acessível por HTTPS (HTTP 200 via curl).                   |
+| Estado        | Workspaces configurados, verificados pelo agente e revisados e aprovados pelo usuário.                                                                        |
+| Concluído     | Manifests mínimos, exclusões do Git e lockfile único criados. Bun reconhece web e API; instalação com --frozen-lockfile passou, sem dependências externas.    |
 | Publicação    | Encerramento do M1 (Visão conceitual do sistema) em main; repositório público ranzolinrafa/agent-review-lab.                                                  |
-| Implementação | Estrutura inicial sem código de aplicação ou dependências instaladas. Git e origin configurados.                                                              |
-| Próximo passo | Alinhar e implementar somente os manifests mínimos e exclusões do Git; verificar os workspaces e aguardar reprodução e aprovação do usuário.                  |
-| Autorização   | Plano e commit documental aprovados. Implementação de workspaces depende de concordância; sem autorização para tag ou push.                                   |
+| Implementação | Dois workspaces privados, sem código de aplicação ou scripts. Bun 1.4.4 disponível; Git e origin configurados.                                                |
+| Próximo passo | Explicar a inicialização da API com o template vazio de bun init, apresentar os arquivos esperados e aguardar concordância antes da execução.                 |
+| Autorização   | Commit intermediário dos workspaces autorizado. Inicialização da API depende de alinhamento; sem autorização para tag ou push.                                |
 | Foco          | Concluir a fundação conforme o roteiro do guia, compreendendo cada configuração; agente e usuário verificam cada checkpoint antes do avanço.                  |
-| Pendências    | Shell não interativo do agente ainda não encontra Bun no PATH; usar o caminho absoluto verificado. Instalação de dependências ainda não exercitada.           |
+| Pendências    | Shell não interativo do agente usa o caminho absoluto do Bun; dependências externas ainda não instaladas.                                                     |

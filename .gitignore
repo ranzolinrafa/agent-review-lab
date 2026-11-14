@@ -1,0 +1,14 @@
+# Installed dependencies
+node_modules/
+
+# Build outputs
+dist/
+*.tsbuildinfo
+
+# Local environment files
+.env
+.env.*
+!.env.example
+
+# macOS metadata
+.DS_Store

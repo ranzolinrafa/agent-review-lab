@@ -9,13 +9,25 @@ documentados.
 
 ## Estado do projeto
 
-O repositório contém a documentação de escopo, roteiro, metodologia e visão
-conceitual do sistema.
-A aplicação ainda não foi implementada e não há dependências ou comandos de
-instalação, execução e testes disponíveis.
+O repositório contém a documentação do projeto e a configuração mínima de Bun
+workspaces para `apps/web` e `apps/api`. As aplicações ainda não têm código,
+dependências externas ou scripts de execução e testes.
 
 Consulte o [progresso](docs/project/progress.md) para o checkpoint atual e o
 [guia do projeto](docs/project/guide.md) para o roteiro completo.
+
+## Verificar a estrutura inicial
+
+Com Bun 1.4.4 disponível, execute na raiz:
+
+```sh
+bun install --frozen-lockfile
+bun pm ls
+```
+
+A instalação deve concluir sem alterar o lockfile. A listagem deve identificar
+`@agent-review-lab/api` e `@agent-review-lab/web` como workspaces locais.
+Ainda não há uma aplicação executável neste checkpoint.
 
 ## Experiência planejada
 
