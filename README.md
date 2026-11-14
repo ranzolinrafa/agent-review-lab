@@ -9,7 +9,8 @@ documentados.
 
 ## Estado do projeto
 
-O repositório contém a documentação inicial de escopo, roteiro e metodologia.
+O repositório contém a documentação de escopo, roteiro, metodologia e visão
+conceitual do sistema.
 A aplicação ainda não foi implementada e não há dependências ou comandos de
 instalação, execução e testes disponíveis.
 
@@ -33,7 +34,7 @@ Consulte o [progresso](docs/project/progress.md) para o checkpoint atual e o
 - **API:** Bun, tRPC para operações tipadas e Zod para validação em runtime.
 - **Progresso em tempo real:** Server-Sent Events (SSE).
 - **Interface visual:** Tailwind CSS e Radix UI conforme a necessidade.
-- **Qualidade:** Biome, Bun test, Testing Library e Playwright, introduzidos nas
+- **Qualidade:** Biome, Bun test, Vitest, Testing Library e Playwright, introduzidos nas
   etapas correspondentes.
 
 Frontend, API e documentação ficarão no mesmo repositório, com Bun workspaces.
@@ -50,6 +51,8 @@ representar uma política de crédito de produção.
 
 ## Documentação
 
+- [Fluxo completo e visão do sistema](docs/system/overview.md): caminho dos dados da criação à decisão humana.
+- [Índice de conceitos](docs/concepts/README.md): fundamentos das tecnologias e organização do código.
 - [Guia do projeto](docs/project/guide.md): objetivo, escopo e milestones.
 - [Progresso](docs/project/progress.md): estado atual e próxima ação.
 - [Instruções do agente](docs/instructions/agent-instructions.md): aprendizado, implementação e revisão.

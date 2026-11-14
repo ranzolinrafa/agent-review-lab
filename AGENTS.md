@@ -41,8 +41,10 @@ instrução de consulta, não um mecanismo de carregamento automático.
 | Ao definir cenários ou implementar testes                               | Camada adequada, recap e TDD seletivo                | [Testes](docs/instructions/agent-instructions.md#testes)                                             |
 | Ao identificar ponto de commit                                          | Conventional Commits, revisão e aprovação            | [Git](docs/instructions/agent-instructions.md#git)                                                   |
 | Ao encerrar passo ou sessão                                             | Resultado, validações, impedimentos e próxima ação   | [Retomada](docs/instructions/agent-instructions.md#retomada) e [progresso](docs/project/progress.md) |
+| Ao estudar fundamentos das tecnologias                                  | Índice e referências condicionais por assunto        | [Conceitos](docs/concepts/)                                                                          |
+| Ao estudar ou alterar fluxos e contratos da aplicação                   | Documentação pertinente ao funcionamento do sistema  | [Sistema](docs/system/)                                                                              |
 
-Quando houver conteúdo em `docs/concepts/` (fundamentos), `docs/system/` (fluxos e
-contratos da aplicação) e `docs/adr/` (decisões), adicionar referências condicionais
-para consultar somente os documentos pertinentes.
-Não criar essas pastas vazias nem referências para documentos inexistentes.
+Manter as referências por assunto no índice de `docs/concepts/`, sem listar cada
+nota conceitual neste arquivo. Consultar somente os documentos pertinentes.
+Quando houver conteúdo em `docs/adr/` (decisões), adicionar referência condicional
+ao diretório. Não criar pastas vazias nem referências para documentos inexistentes.

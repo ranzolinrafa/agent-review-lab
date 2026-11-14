@@ -76,6 +76,7 @@ avaliaremos se existe código compartilhado que justifique um pacote.
 | Radix UI        | Componentes interativos conforme a necessidade                  |
 | FSD adaptado    | Organização progressiva do frontend por responsabilidades       |
 | Biome           | Formatação e análise estática                                   |
+| Vitest          | Executar testes de lógica e componentes do frontend             |
 | Testing Library | Comportamento observável de componentes                         |
 | Playwright      | Fluxos completos entre navegador e API                          |
 
@@ -237,7 +238,7 @@ sem virar funcionalidade extra fora do escopo.
 4. Introduzir Tailwind e Radix nos componentes que precisarem deles.
 5. Construir formulário, lista e detalhe em passos separados.
 6. Tratar validação, carregamento, vazio, erro e solicitação inexistente.
-7. Fazer recap de testes e introduzir Testing Library junto das interações.
+7. Fazer recap de testes e introduzir Vitest com Testing Library junto das interações.
 
 **Validação:** criação e consulta na API; formulário, estados e interações nos
 componentes; observar atualização do cache após criação.

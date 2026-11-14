@@ -29,6 +29,10 @@ usadas; revisar outros conceitos dessas tecnologias quando solicitado.
   os nomes do guia, em documentos e respostas.
 - Registrar somente o que ajuda a compreender o projeto, uma decisão ou a próxima
   ação. Não narrar correções de links, formatação ou outras edições rotineiras.
+- Distinguir conteúdo relevante para o projeto de dúvidas pontuais da conversa.
+  Não documentar automaticamente toda explicação; registrar dúvidas somente quando
+  a resposta ajudar a compreender, implementar ou retomar o projeto, ou por pedido
+  do usuário.
 
 ## Impedimentos e checkpoints
 
@@ -67,8 +71,8 @@ nem manter pendências já resolvidas no progresso.
 - Definir cenários e critérios de aceite antes de escolher a camada do teste.
 - Fazer recap de testes unitários, integração e ponta a ponta antes de aplicá-los.
 - TDD seletivo em regras e transições: teste falhando, implementação e refatoração.
-- Bun test em backend/regras; Testing Library em componentes; Playwright em fluxos
-  integrados, conforme introduzidos.
+- Bun test em backend/regras; Vitest com Testing Library em componentes e Vitest
+  em lógica do frontend; Playwright em fluxos integrados, conforme introduzidos.
 - Entregar código e testes no mesmo passo de comportamento; discutir a ordem em
   componentes e integração conforme o aprendizado.
 - Não criar testes artificiais para configuração ou métricas, nem repetir todos
@@ -76,9 +80,22 @@ nem manter pendências já resolvidas no progresso.
 
 ## Git
 
-Usar Conventional Commits em inglês. Ao identificar um bom ponto de commit,
-explicar o conteúdo e sugerir mensagem; aguardar aprovação após revisão do passo.
-Inicialização de Git, commit, repositório remoto e push são ações separadas.
+Usar Conventional Commits em inglês.
+
+Ao concluir um milestone revisado e aprovado pelo usuário:
+
+1. Atualizar o status na tabela de milestones e o checkpoint em
+   [progresso](../project/progress.md), removendo pendências resolvidas.
+2. Conferir as alterações e executar as verificações pertinentes.
+3. Criar o commit de encerramento, incluindo o progresso atualizado, sem pedir
+   nova confirmação para o commit.
+4. Informar o resultado e o próximo passo, aguardando alinhamento antes de iniciar
+   o milestone seguinte.
+
+Essa autorização é permanente para commits de encerramento de milestones.
+Para pontos de commit intermediários, explicar o conteúdo e sugerir mensagem;
+aguardar aprovação após revisão do passo. Inicialização de Git, repositório remoto
+e push continuam sendo ações separadas, sem autorização automática.
 
 ## Retomada
 
@@ -87,9 +104,11 @@ uma ou duas frases: milestone atual (com nome), resultado relevante, próximo pa
 e eventual impedimento ou aprovação pendente. Não repetir esse resumo para cada
 pequeno ajuste editorial.
 
-Manter a tabela de [progresso](../project/progress.md) como retrato atual: milestone,
-estado, resultado relevante, próxima ação, autorização e pendências. Atualizar as
-células quando o estado mudar; não acrescentar uma entrada para cada edição.
+Manter o [progresso](../project/progress.md) como retrato atual: uma tabela com o
+status de todos os milestones e outra com o checkpoint detalhado, incluindo
+milestone atual, estado, resultado relevante, próxima ação, autorização e
+pendências. Atualizar as células quando o estado mudar; não acrescentar uma
+entrada para cada edição nem repetir o escopo de cada milestone.
 Remover pendências resolvidas e não repetir escopo ou procedimentos de outros arquivos.
 
 Executar verificações normalmente, mas registrar no progresso apenas resultados que
