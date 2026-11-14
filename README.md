@@ -9,42 +9,70 @@ documentados.
 
 ## Estado do projeto
 
-O repositório contém a documentação do projeto e a configuração mínima de Bun
-workspaces para `apps/web` e `apps/api`. A API tem o ponto de entrada mínimo e a
-configuração TypeScript revisada a partir do template de `bun init`. A web executa
-o template oficial React + TypeScript do Vite, com a página original e o contador.
-A API ainda não atende HTTP e a web ainda não consulta o backend.
+A fundação local está implementada: Bun workspaces, API HTTP mínima, web React
+com Vite e Biome compartilhado. Um comando inicia as duas aplicações; a página
+preserva o template e seu contador e permite consultar a resposta da API.
+Ainda não há funcionalidades de crédito implementadas.
 
 Consulte o [progresso](docs/project/progress.md) para o checkpoint atual e o
 [guia do projeto](docs/project/guide.md) para o roteiro completo.
 
-## Verificar a configuração atual
+## Instalar e executar
 
 O ambiente verificado utiliza Bun 1.4.4 e Node 24.15.0. Bun gerencia os pacotes e
-executa a API; o CLI do Vite usa Node. Execute na raiz:
+executa a API; o CLI do Vite usa Node. Com ambos disponíveis no `PATH`, execute na raiz:
 
 ```sh
 bun install --frozen-lockfile
-bun run --filter @agent-review-lab/api typecheck
-bun run apps/api/index.ts
-bun run --filter @agent-review-lab/web build
-bun run --filter @agent-review-lab/web lint
-bun pm ls --all
+bun run dev
 ```
 
-A instalação deve concluir sem alterar o lockfile e a verificação de tipos deve
-passar. O ponto de entrada imprime `Hello via Bun!` e encerra; ele ainda não atende
-requisições HTTP. A listagem identifica os dois workspaces e as dependências
-instaladas. O build da web também verifica tipos; o lint original usa Oxlint,
-que será substituído por Biome no passo previsto. Para abrir a página:
+Acesse a web em `http://127.0.0.1:5173/` e clique em **Consultar API**: deve aparecer
+`Hello World!`. A API também responde diretamente em `http://127.0.0.1:3000/`.
+O comando mantém os processos ativos; `Ctrl+C` encerra ambos. Encerre instâncias
+anteriores antes de iniciar, pois as portas são fixas.
+
+Em outro terminal, é possível conferir a API direta e o encaminhamento pelo Vite:
 
 ```sh
-bun run --filter @agent-review-lab/web dev
+curl -i http://127.0.0.1:3000/
+curl -i http://127.0.0.1:5173/api/
+curl -i http://127.0.0.1:3000/inexistente
 ```
 
-Acesse o endereço informado pelo Vite, normalmente `http://localhost:5173/`, e
-encerre com `Ctrl+C`. Consulte os READMEs da [API](apps/api/README.md) e da
-[web](apps/web/README.md) para os comandos e detalhes de cada aplicação.
+As duas primeiras consultas retornam `200` e `Hello World!`; a última retorna
+`404` e `Not Found`. O [fluxo local](docs/system/local-development.md) explica
+processos, rotas, proxy e tratamento de erro.
+
+## Verificações
+
+Execute na raiz:
+
+```sh
+bun run check
+bun run --filter @agent-review-lab/api typecheck
+bun run --filter @agent-review-lab/web build
+```
+
+`check` verifica formatação, lint e organização de imports com Biome. `typecheck`
+verifica os tipos da API; o build da web verifica seus projetos TypeScript e gera
+`apps/web/dist`. Nenhum desses comandos exige servidores em execução.
+
+Para aplicar correções seguras ou somente formatar, respectivamente:
+
+```sh
+bun run check:fix
+bun run format
+```
+
+Os READMEs da [API](apps/api/README.md) e da [web](apps/web/README.md) incluem
+execução e qualidade individuais, além da verificação manual de erro e recuperação.
+Ainda não há suítes automatizadas instaladas; elas serão introduzidas junto dos
+comportamentos previstos no roteiro.
+
+`--frozen-lockfile` exige manifests e lockfile consistentes, sem atualizá-lo. Ao
+adicionar ou mudar dependências, use os comandos normais do Bun, revise o diff e
+inclua o lockfile gerado no commit. A instalação foi conferida em worktree limpa.
 
 ## Experiência planejada
 
@@ -66,8 +94,8 @@ encerre com `Ctrl+C`. Consulte os READMEs da [API](apps/api/README.md) e da
 - **Qualidade:** Biome, Bun test, Vitest, Testing Library e Playwright, introduzidos nas
   etapas correspondentes.
 
-Frontend, API e documentação ficarão no mesmo repositório, com Bun workspaces.
-As ferramentas serão configuradas progressivamente, seguindo o roteiro.
+React, TypeScript, Vite, Bun workspaces e Biome já estão configurados. As demais
+ferramentas serão introduzidas progressivamente, seguindo o roteiro.
 
 ## Limites da simulação
 
@@ -81,6 +109,8 @@ representar uma política de crédito de produção.
 ## Documentação
 
 - [Fluxo completo e visão do sistema](docs/system/overview.md): caminho dos dados da criação à decisão humana.
+- [Desenvolvimento local](docs/system/local-development.md): processos e contrato HTTP implementados.
+- [Decisão de organização](docs/adr/0001-monorepo-with-bun-workspaces.md): monorepo e inicialização das aplicações.
 - [Índice de conceitos](docs/concepts/README.md): fundamentos das tecnologias e organização do código.
 - [Guia do projeto](docs/project/guide.md): objetivo, escopo e milestones.
 - [Progresso](docs/project/progress.md): estado atual e próxima ação.

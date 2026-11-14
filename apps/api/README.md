@@ -10,9 +10,9 @@ O manifesto identifica esta aplicação como o workspace privado
 
 ## Configuração atual
 
-O template vazio de `bun init` criou `index.ts` e `tsconfig.json` e acrescentou o
-script `typecheck` ao manifesto. O ponto de entrada imprime uma mensagem no
-terminal e encerra; ainda não existe servidor HTTP.
+O ponto de entrada `index.ts` inicia o servidor com `Bun.serve` em
+`http://127.0.0.1:3000/`. A rota `GET /` responde `Hello World!`; caminhos
+inexistentes respondem `404`. O processo permanece ativo aguardando requisições.
 
 `@types/bun` 1.4.4 e TypeScript 7.0.2 são dependências de desenvolvimento com
 versões explícitas. A configuração foi revisada para a API no
@@ -31,10 +31,27 @@ Execute na raiz do repositório:
 bun install --frozen-lockfile
 bun run --filter @agent-review-lab/api typecheck
 bun run --cwd apps/api tsc --noEmit
-bun run apps/api/index.ts
+bun run --filter @agent-review-lab/api check
+bun run --filter @agent-review-lab/api dev
 ```
 
-A instalação deve respeitar o lockfile, `typecheck` deve concluir sem erros e o
-ponto de entrada deve imprimir `Hello via Bun!`. O script `typecheck` usa
-`bun check`, conforme gerado pelo Bun 1.4.4. A execução direta de `tsc --noEmit`
-também foi conferida e deve concluir sem erros, normalmente sem saída no terminal.
+A instalação deve respeitar o lockfile, as verificações devem passar e `dev` deve
+imprimir o endereço do servidor. `dev` usa `bun --watch index.ts`, reiniciando
+após mudanças; encerre com `Ctrl+C`. Para executar sem observar mudanças, use
+`bun run --filter @agent-review-lab/api start`.
+
+Em outro terminal, execute:
+
+```sh
+curl -i http://127.0.0.1:3000/
+curl -i http://127.0.0.1:3000/inexistente
+```
+
+Confira status `200` com `Hello World!` e `404` com `Not Found`. O contrato e o
+encaminhamento pela web estão em
+[Desenvolvimento local](../../docs/system/local-development.md).
+
+`check` chama o Biome instalado na raiz, abrangendo somente a API. `typecheck`
+usa `bun --check`, sem arquivo de entrada, para verificar tipos sem executar o
+servidor. Essa forma evita que `bun check` resolva o script homônimo de Biome.
+`tsc --noEmit` também foi conferido e deve passar, normalmente sem saída.

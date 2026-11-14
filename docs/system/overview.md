@@ -1,7 +1,9 @@
 # Visão geral do sistema
 
-Visão conceitual em construção no M1 (Visão conceitual do sistema).
-Descreve o funcionamento previsto; a aplicação ainda não foi implementada.
+Visão conceitual revisada no M1 (Visão conceitual do sistema).
+Descreve o fluxo de crédito previsto, ainda não implementado. A fundação executável
+do M2 (Estrutura e ambiente, um passo por vez) está descrita em
+[Desenvolvimento local](local-development.md).
 
 ## Fluxo completo do caminho feliz
 

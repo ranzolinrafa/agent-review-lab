@@ -35,12 +35,23 @@ operações da API. Introdução no M4 (Solicitações e backoffice básico).
 
 ## Qualidade e testes
 
-Biome cuidará de formatação e lint, enquanto TypeScript fará a verificação de tipos.
-O template atual do Vite trouxe Oxlint, preservado para inspeção antes da
-substituição no passo de Biome; não foi uma nova escolha permanente de ferramenta.
+Biome cuida de formatação e lint, enquanto TypeScript faz a verificação de tipos.
+Oxlint, trazido pelo template do Vite, foi inspecionado e substituído por Biome.
 O formatador padroniza a apresentação do código; o linter aponta padrões
 problemáticos conforme as regras configuradas e pode oferecer correções.
 Essas verificações não comprovam o comportamento das regras da aplicação.
+
+Há uma instalação de Biome na raiz, com versão fixa 2.6.7 e configuração
+compartilhada. O arquivo gerado oficialmente foi ajustado para dois espaços e
+para abranger JavaScript, TypeScript, JSON e CSS. Regras recomendadas e organização
+de imports permanecem habilitadas. A integração com Git respeita o `.gitignore`;
+documentação, imagens e saídas geradas não são formatadas por esse escopo.
+
+`check` verifica sem escrever; `check:fix` aplica correções consideradas seguras
+pela ferramenta e `format` modifica somente formatação. Correções automáticas
+ainda exigem revisão do diff. Os scripts individuais usam a configuração da raiz,
+mas limitam a análise ao diretório da aplicação. Uma instalação compartilhada não
+obriga executar a verificação no repositório inteiro.
 
 Biome não valida automaticamente a arquitetura FSD. Restrições de imports podem
 ajudar a impor fronteiras, mas uma verificação específica de FSD exige regras ou
@@ -61,8 +72,8 @@ colaborando; testes de componentes observam interações na interface; testes de
 ponta a ponta percorrem a jornada pela aplicação. O escopo define o tipo de teste,
 não apenas a ferramenta.
 
-Cada aplicação terá configuração própria e comandos conhecidos, coordenados na
-raiz pelos workspaces. Padronizar comandos não exige compartilhar executores.
+Cada aplicação terá configuração de testes apropriada e comandos conhecidos,
+coordenados na raiz pelos workspaces. Padronizar comandos não exige compartilhar executores.
 Vitest foi escolhido para aproveitar o ambiente Vite; Bun test preserva o runtime
 do backend nos testes. Não instalar ferramentas antes dos passos correspondentes.
 

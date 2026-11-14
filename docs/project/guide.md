@@ -231,9 +231,9 @@ na revisão; problemas complexos ou soluções que alterem o plano exigem discus
 antes da ação. Instalação malsucedida continua exigindo análise conjunta, conforme
 as instruções do agente.
 
-Após a revisão e aprovação de cada checkpoint, criar o commit de implementação
-autorizado antes de editar a documentação. Atualizar então os documentos
-pertinentes e o progresso e criar um commit documental separado, também autorizado,
+Após a revisão e aprovação de cada checkpoint, criar seu commit de implementação
+mediante autorização explícita. Atualizar os documentos, instruções e progresso
+somente ao final do milestone, em commit documental separado e autorizado,
 conforme o [ciclo de cada passo](../instructions/agent-instructions.md#ciclo-de-cada-passo).
 
 **Validação:** instalação reproduzível e lockfile, verificação de tipos, Biome,
@@ -241,7 +241,8 @@ build da web e execução de web/API/comunicação local, conforme introduzidos.
 
 **Aceite:** um script na raiz inicia as duas aplicações; API responde `Hello World!`
 por GET; página padrão do Vite acessível no navegador, com contador funcional e
-consulta à API exibida na interface; comandos documentados e verificações passando. Usuário revisa os resultados e
+consulta à API exibida na interface; comandos documentados e verificações passando.
+Usuário revisa os resultados e
 sinaliza compreensão das configurações e workspaces, sem avaliação. Sem regras ou
 telas de crédito. Nunca executar a lista inteira sem checkpoints entre os passos.
 

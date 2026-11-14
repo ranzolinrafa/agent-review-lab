@@ -12,19 +12,27 @@
 8. **Aprovação e commit da implementação:** aguardar a revisão e aprovação do
    usuário; apresentar o conteúdo e a mensagem e obter autorização explícita para
    criar o commit dos arquivos do projeto.
-9. **Documentação e commit documental:** somente após concluir o desenvolvimento
-   do checkpoint e criar seu commit, atualizar a documentação pertinente e o
-   progresso; revisar e obter autorização explícita para um commit separado.
+9. **Documentação ao final do milestone:** após concluir e commitar os checkpoints
+   de implementação, atualizar a documentação pertinente e o progresso; revisar e
+   obter autorização explícita para um commit documental separado.
 
 Durante o desenvolvimento do checkpoint, manter o diff focado nos arquivos do
 projeto, incluindo os testes pertinentes. Adiar alterações em `docs/`, READMEs e
-instruções de agentes para a etapa documental, sem misturá-las ao commit de
-implementação. As explicações, propostas e acordos anteriores à implementação
-continuam acontecendo na conversa; registrar o resultado na etapa documental.
-Não avançar ao próximo passo enquanto o fechamento documental estiver pendente.
+instruções de agentes para o encerramento do milestone, sem misturá-las aos commits
+de implementação. As explicações, propostas e acordos anteriores à implementação
+continuam acontecendo na conversa; registrar os resultados na etapa documental
+final. Checkpoints intermediários mantêm explicação, concordância, revisão e
+autorização própria para commit, sem exigir uma atualização documental a cada passo.
+
+Se a sessão terminar antes do milestone, apresentar na conversa o resultado,
+pendências, commits e próxima ação, avisando que os documentos ainda retratam o
+último fechamento documental. Não atualizá-los antecipadamente sem novo alinhamento
+do usuário. Na retomada, conferir o Git e os arquivos atuais junto dos documentos.
 
 Tarefas exclusivamente documentais, como planejamento ou mudança de metodologia,
 seguem revisão e commit próprios, sem exigir um commit de implementação vazio.
+Quando uma entrevista for necessária, fazer uma pergunta por vez e usar a resposta
+para orientar a próxima; não aplicar perguntas de avaliação.
 
 Pastas, Bun/workspaces, TypeScript e Vite são passos separados. Edições dentro de
 um passo aprovado não exigem nova confirmação; novas ferramentas ou decisões, sim.
@@ -74,9 +82,9 @@ ser tratadas agora ou ficar pendentes e qual é o impacto no passo atual.
 
 Antes de implementar uma mudança relevante, obter concordância sobre o plano e
 os critérios de aceite afetados na conversa. Validar a entrega contra o que foi
-combinado. Após o commit da implementação, atualizar os documentos e referências
-afetados em etapa separada. Documentação pertinente atualizada e seu commit
-autorizado fazem parte da conclusão do checkpoint.
+combinado. No encerramento do milestone, após os commits da implementação,
+atualizar os documentos e referências afetados em etapa separada. Documentação
+pertinente atualizada e seu commit autorizado fazem parte desse encerramento.
 
 Manter uma fonte por informação, conforme a organização dos documentos. Revisar
 notas conceituais se algum exemplo deixar de ser válido. Git preserva versões;
@@ -97,12 +105,12 @@ nem manter pendências já resolvidas no progresso.
 
 ## Git
 
-Em checkpoints de desenvolvimento, criar primeiro o commit da implementação
-revisada e aprovada; só depois editar a documentação e criar seu commit separado.
-Apresentar conteúdo e mensagem de cada commit e obter autorização explícita para
-cada um. Aprovar um commit de implementação não autoriza o documental seguinte.
-Após os dois commits, verificar o estado da working tree e informar eventuais
-alterações restantes, sem incluir mudanças alheias ao passo.
+Em cada checkpoint, criar o commit da implementação revisada e aprovada mediante
+autorização explícita. Somente ao final do milestone editar a documentação e criar
+seu commit separado, também mediante autorização explícita. Aprovar um commit de
+implementação não autoriza o documental de encerramento. Após cada commit,
+verificar a working tree e informar eventuais alterações restantes, sem incluir
+mudanças alheias ao passo.
 
 Usar Conventional Commits em inglês. A partir dos próximos encerramentos, usar
 ambos os marcos abaixo:
@@ -148,8 +156,8 @@ pequeno ajuste editorial.
 Manter o [progresso](../project/progress.md) como retrato atual: uma tabela com o
 status de todos os milestones e outra com o checkpoint detalhado, incluindo
 milestone atual, estado, resultado relevante, próxima ação, autorização e
-pendências. Atualizar as células na etapa documental de cada checkpoint,
-após o commit da implementação; não acrescentar uma
+pendências. Atualizar as células na etapa documental de encerramento do milestone,
+após os commits da implementação; não acrescentar uma
 entrada para cada edição nem repetir o escopo de cada milestone.
 Remover pendências resolvidas e não repetir escopo ou procedimentos de outros arquivos.
 

@@ -9,10 +9,11 @@ Monorepo reúne projetos no mesmo repositório. Facilita revisar mudanças que
 envolvem frontend, backend e documentação. Não une os processos em execução:
 navegador e servidor continuam separados e se comunicam pela rede.
 
-No projeto, `apps/web` conterá o frontend React, `apps/api` o servidor Bun, e `docs`
-a documentação. Cada aplicação terá manifesto, dependências e comandos próprios;
-Bun workspaces ajudará a administrá-las a partir da raiz. A configuração será
-estudada no M2 (Estrutura e ambiente, um passo por vez).
+No projeto, `apps/web` contém o frontend React, `apps/api` o servidor Bun, e `docs`
+a documentação. Cada aplicação tem manifesto, dependências e comandos próprios;
+Bun workspaces administra o conjunto a partir da raiz. A organização foi
+configurada no M2 (Estrutura e ambiente, um passo por vez), com justificativas na
+[ADR 0001](../adr/0001-monorepo-with-bun-workspaces.md).
 
 ## Manifests e instalação com Bun workspaces
 
@@ -36,10 +37,23 @@ fora do Git.
 também permite examinar as dependências transitivas. A listagem não substitui a
 inspeção dos arquivos e links físicos.
 
-Na instalação atual, os pacotes externos da API ficam em `node_modules/.bun`,
-com links em `apps/api/node_modules`. Esse é o armazenamento da instalação no
-repositório, distinto do cache global em `~/.bun/install/cache`, cujo caminho pode
-ser consultado com `bun pm cache`. A web ainda não declara dependências externas.
+Na instalação atual, os pacotes externos ficam em `node_modules/.bun`, com links
+para as dependências das aplicações em seus diretórios `node_modules`. Esse é o
+armazenamento da instalação no repositório, distinto do cache global em
+`~/.bun/install/cache`, cujo caminho pode ser consultado com `bun pm cache`.
+O cache reaproveita downloads entre instalações e repositórios; não substitui os
+manifests nem o lockfile.
+
+Novos workspaces com `configVersion: 1` usam por padrão a estratégia isolada do
+Bun. Pacotes com resoluções compatíveis podem compartilhar armazenamento, enquanto
+versões ou conjuntos de peers distintos podem coexistir. A estratégia hoisted
+organiza dependências de forma mais plana na raiz. A disposição física deve ser
+inspecionada, sem presumir que todo pacote encontrado pertença a toda aplicação.
+
+Bun é o gerenciador de pacotes; o registro npm é a fonte padrão dos downloads,
+sem exigir executar o gerenciador npm. Bun também aceita registros privados,
+dependências locais e Git. Cada aplicação deve declarar o que usa mesmo que a
+mesma dependência já esteja instalada para outra.
 
 Uma `devDependency` declara uma ferramenta necessária ao desenvolvimento do
 projeto. Uma `peerDependency` expressa uma expectativa de compatibilidade com o
@@ -48,7 +62,9 @@ TypeScript como peer; na API, ele foi classificado como ferramenta de
 desenvolvimento da aplicação. A categoria da declaração não determina sozinha
 a localização física dos arquivos instalados.
 
-Referência: [Workspaces do Bun](https://bun.com/docs/pm/workspaces).
+Referências: [Workspaces](https://bun.com/docs/pm/workspaces),
+[instalações isoladas](https://bun.com/docs/pm/isolated-installs) e
+[cache global](https://bun.com/docs/pm/global-cache).
 
 ## Layers, slices e segments
 

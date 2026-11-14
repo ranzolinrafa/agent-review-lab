@@ -14,7 +14,7 @@ Em caso de dúvida, discutir sua relevância antes de escrever.
 ## Processo
 
 1. Apresentar contexto, alternativas e consequências; obter concordância antes da implementação.
-2. Registrar a decisão na etapa documental após o commit da implementação,
+2. Registrar a decisão na etapa documental de encerramento do milestone, após os commits da implementação,
    distinguindo proposta de aprovação e preservando os motivos discutidos antes
    do código. Se a tarefa for exclusivamente documental, seguir seu próprio
    ciclo de revisão e commit, sem exigir implementação.

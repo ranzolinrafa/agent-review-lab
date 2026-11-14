@@ -16,11 +16,18 @@ console.log(message);
 Na demonstração temporária, executar esse código imprimiu `42`; verificar seus
 tipos reportou `TS2322`. O exemplo não permanece no código da aplicação.
 
-O script `typecheck` da API usa `bun check`, que lê `tsconfig.json`, reporta erros
+O script `typecheck` da API usa `bun --check`, sem arquivo de entrada, que lê
+`tsconfig.json`, reporta erros
 e não executa o programa. No Bun 1.4.4, o verificador integrado tem comportamento
 compatível com TypeScript 7, independentemente da versão instalada do pacote
 `typescript`. O editor usa seu próprio serviço TypeScript; a versão instalada no
 projeto pode ser selecionada no editor para manter a análise alinhada.
+
+O comando integrado também é acessível por `bun check` quando não há colisão com
+um script homônimo. No projeto, `check` passou a chamar Biome, e foi observado que
+`bun check` resolvia esse script dentro da API. A flag `bun --check` evita a
+ambiguidade e preserva a verificação de tipos. Sua eficácia foi conferida com erro
+temporário que o verificador rejeitou, removido antes do commit.
 
 Também podemos executar `tsc --noEmit` para verificar com o compilador instalado,
 sem gerar JavaScript. Ambas as verificações foram conferidas na API.
