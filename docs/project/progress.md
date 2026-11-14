@@ -23,11 +23,11 @@ O escopo e os critérios de aceite de cada milestone estão no [guia do projeto]
 | Campo         | Situação atual                                                                                                                                                |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Milestone     | M2 (Estrutura e ambiente, um passo por vez).                                                                                                                  |
-| Estado        | Workspaces revisados e aprovados pelo usuário, com commit intermediário criado. Próximo passo ainda não iniciado.                                             |
-| Concluído     | Manifests mínimos, exclusões do Git e lockfile único criados. Bun reconhece web e API; instalação com --frozen-lockfile passou, sem dependências externas.    |
+| Estado        | Inicialização da API revisada, aprovada e commitada em 71cbbd0; documentação revisada e commit documental autorizado.                                         |
+| Concluído     | Template vazio do Bun integrado ao workspace. Instalação congelada, typecheck e execução verificados pelo agente e reproduzidos pelo usuário.                 |
 | Publicação    | Encerramento do M1 (Visão conceitual do sistema) em main; repositório público ranzolinrafa/agent-review-lab.                                                  |
-| Implementação | Dois workspaces privados, sem código de aplicação ou scripts. Bun 1.4.4 disponível; Git e origin configurados.                                                |
-| Próximo passo | Explicar a inicialização da API com o template vazio de bun init, apresentar os arquivos esperados e aguardar concordância antes da execução.                 |
-| Autorização   | Padrão de commits separados e commit documental das instruções autorizados. Inicialização da API depende de alinhamento; sem autorização para tag ou push.    |
+| Implementação | API imprime Hello via Bun! e encerra; sem HTTP. @types/bun 1.4.4 e TypeScript 7.0.2 instalados; web ainda contém apenas manifesto e README.                   |
+| Próximo passo | Explicar as opções TypeScript da API e as adaptações propostas; aguardar concordância antes de implementá-las.                                                |
+| Autorização   | Commit da inicialização da API criado e commit documental autorizado. Ajustes TypeScript, tag e push ainda não autorizados.                                   |
 | Foco          | Concluir a fundação conforme o roteiro do guia, compreendendo cada configuração; agente e usuário verificam cada checkpoint antes do avanço.                  |
-| Pendências    | Shell não interativo do agente usa o caminho absoluto do Bun; dependências externas ainda não instaladas.                                                     |
+| Pendências    | Revisar peerDependency de TypeScript e intervalo latest de @types/bun no próximo passo. Shell não interativo do agente usa PATH temporário para Bun.          |

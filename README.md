@@ -10,24 +10,29 @@ documentados.
 ## Estado do projeto
 
 O repositório contém a documentação do projeto e a configuração mínima de Bun
-workspaces para `apps/web` e `apps/api`. As aplicações ainda não têm código,
-dependências externas ou scripts de execução e testes.
+workspaces para `apps/web` e `apps/api`. A API tem o ponto de entrada mínimo e a
+configuração original gerados por `bun init`; a web ainda tem apenas seu manifesto.
+Ainda não há servidor HTTP ou página web.
 
 Consulte o [progresso](docs/project/progress.md) para o checkpoint atual e o
 [guia do projeto](docs/project/guide.md) para o roteiro completo.
 
-## Verificar a estrutura inicial
+## Verificar a configuração atual
 
 Com Bun 1.4.4 disponível, execute na raiz:
 
 ```sh
 bun install --frozen-lockfile
-bun pm ls
+bun run --filter @agent-review-lab/api typecheck
+bun run apps/api/index.ts
+bun pm ls --all
 ```
 
-A instalação deve concluir sem alterar o lockfile. A listagem deve identificar
-`@agent-review-lab/api` e `@agent-review-lab/web` como workspaces locais.
-Ainda não há uma aplicação executável neste checkpoint.
+A instalação deve concluir sem alterar o lockfile e a verificação de tipos deve
+passar. O ponto de entrada imprime `Hello via Bun!` e encerra; ele ainda não atende
+requisições HTTP. A listagem identifica os dois workspaces e as dependências
+instaladas para a API. Consulte o [README da API](apps/api/README.md) para os
+detalhes do scaffold e da próxima revisão.
 
 ## Experiência planejada
 

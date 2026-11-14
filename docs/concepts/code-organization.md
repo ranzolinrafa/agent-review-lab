@@ -32,11 +32,21 @@ O manifesto declara as dependências desejadas; o lockfile registra suas resolu�
 sem atualizá-lo. Ambos os arquivos são versionados; `node_modules` é gerado e fica
 fora do Git.
 
-No checkpoint inicial do M2 (Estrutura e ambiente, um passo por vez), os manifests
-ainda não declaram dependências externas. `bun pm ls` identifica os workspaces
-locais registrados no lockfile; essa listagem não prova que já existam pacotes
-externos ou links físicos para cada aplicação. A organização da instalação e o
-cache serão inspecionados quando houver dependências instaladas.
+`bun pm ls` identifica os workspaces registrados no lockfile; `bun pm ls --all`
+também permite examinar as dependências transitivas. A listagem não substitui a
+inspeção dos arquivos e links físicos.
+
+Na instalação atual, os pacotes externos da API ficam em `node_modules/.bun`,
+com links em `apps/api/node_modules`. Esse é o armazenamento da instalação no
+repositório, distinto do cache global em `~/.bun/install/cache`, cujo caminho pode
+ser consultado com `bun pm cache`. A web ainda não declara dependências externas.
+
+Uma `devDependency` declara uma ferramenta necessária ao desenvolvimento do
+projeto. Uma `peerDependency` expressa uma expectativa de compatibilidade com o
+ambiente que utiliza o pacote, comum em bibliotecas. O template do Bun declara
+TypeScript como peer; a revisão da API avaliará sua classificação como ferramenta
+de desenvolvimento da aplicação. A categoria da declaração não determina sozinha
+a localização física dos arquivos instalados.
 
 Referência: [Workspaces do Bun](https://bun.com/docs/pm/workspaces).
 
