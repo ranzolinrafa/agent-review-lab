@@ -4,8 +4,32 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "./assets/vite.svg";
 import "./App.css";
 
+type ApiResult =
+  | { status: "idle" }
+  | { status: "loading" }
+  | { status: "success"; message: string }
+  | { status: "error" };
+
 function App() {
   const [count, setCount] = useState(0);
+  const [apiResult, setApiResult] = useState<ApiResult>({ status: "idle" });
+
+  async function handleApiRequest() {
+    setApiResult({ status: "loading" });
+
+    try {
+      const response = await fetch("/api/");
+
+      if (!response.ok) {
+        throw new Error(`API request failed with status ${response.status}`);
+      }
+
+      const message = await response.text();
+      setApiResult({ status: "success", message });
+    } catch {
+      setApiResult({ status: "error" });
+    }
+  }
 
   return (
     <>
@@ -28,6 +52,29 @@ function App() {
         >
           Count is {count}
         </button>
+      </section>
+
+      <section className="api-demo" aria-labelledby="api-heading">
+        <h2 id="api-heading">Consulta à API</h2>
+        <button
+          type="button"
+          className="counter"
+          onClick={handleApiRequest}
+          disabled={apiResult.status === "loading"}
+        >
+          {apiResult.status === "loading" ? "Consultando..." : "Consultar API"}
+        </button>
+        <p role="status">
+          {apiResult.status === "idle" && "Aguardando consulta."}
+          {apiResult.status === "loading" && "Aguardando resposta da API..."}
+          {apiResult.status === "success" && apiResult.message}
+        </p>
+        {apiResult.status === "error" && (
+          <p role="alert">
+            Não foi possível consultar a API. Verifique se ela está em execução
+            e tente novamente.
+          </p>
+        )}
       </section>
 
       <div className="ticks"></div>
