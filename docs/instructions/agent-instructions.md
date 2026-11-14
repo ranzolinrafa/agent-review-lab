@@ -80,21 +80,33 @@ nem manter pendências já resolvidas no progresso.
 
 ## Git
 
-Usar Conventional Commits em inglês.
+Usar Conventional Commits em inglês. A partir dos próximos encerramentos, usar
+ambos os marcos abaixo:
+
+- Commit com o identificador do milestone como escopo, em minúsculas, e descrição
+  explícita da conclusão. Escolher o tipo conforme o conteúdo, por exemplo:
+  `docs(m1): complete system conceptual overview` ou
+  `chore(m2): complete project foundation`.
+- Tag anotada no formato `milestone-mN`, como `milestone-m2`, apontando para o
+  commit de encerramento com o progresso atualizado. A anotação deve identificar
+  o milestone e resumir o resultado aprovado. Não mover a tag automaticamente se
+  houver ajustes posteriores.
 
 Ao concluir um milestone revisado e aprovado pelo usuário:
 
 1. Atualizar o status na tabela de milestones e o checkpoint em
    [progresso](../project/progress.md), removendo pendências resolvidas.
 2. Conferir as alterações e executar as verificações pertinentes.
-3. Apresentar o conteúdo e a mensagem do commit de encerramento, incluindo o
-   progresso atualizado, e aguardar autorização explícita antes de criar o commit.
-4. Antes de fazer push, apresentar o que será enviado e aguardar autorização
-   explícita para o envio. Autorizar commit não autoriza push.
-5. Informar o resultado e o próximo passo, aguardando alinhamento antes de iniciar
+3. Apresentar o conteúdo, a mensagem do commit de encerramento e a tag anotada
+   proposta. Aguardar autorização explícita antes de criar o commit e a tag.
+4. Antes de fazer push, apresentar os commits e a tag que serão enviados e aguardar
+   autorização explícita para o envio. Autorizar criação não autoriza publicação;
+   push de branch não publica tags automaticamente.
+5. Informar o hash do commit, a tag e o resultado da publicação quando executados,
+   além do próximo passo, aguardando alinhamento antes de iniciar
    o milestone seguinte.
 
-Sempre confirmar com o usuário antes de executar commit ou push, inclusive em
+Sempre confirmar com o usuário antes de criar commit, criar tag ou fazer push, inclusive em
 encerramentos de milestones e pontos intermediários. Aprovar um passo ou concluir
 um milestone não autoriza essas ações automaticamente. Inicialização de Git e
 configuração de repositório remoto também são ações separadas.
