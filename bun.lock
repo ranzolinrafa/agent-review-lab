@@ -8,10 +8,8 @@
     "apps/api": {
       "name": "@agent-review-lab/api",
       "devDependencies": {
-        "@types/bun": "latest",
-      },
-      "peerDependencies": {
-        "typescript": "^7",
+        "@types/bun": "1.4.4",
+        "typescript": "7.0.2",
       },
     },
     "apps/web": {
