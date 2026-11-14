@@ -229,6 +229,11 @@ na revisão; problemas complexos ou soluções que alterem o plano exigem discus
 antes da ação. Instalação malsucedida continua exigindo análise conjunta, conforme
 as instruções do agente.
 
+Após a revisão e aprovação de cada checkpoint, criar o commit de implementação
+autorizado antes de editar a documentação. Atualizar então os documentos
+pertinentes e o progresso e criar um commit documental separado, também autorizado,
+conforme o [ciclo de cada passo](../instructions/agent-instructions.md#ciclo-de-cada-passo).
+
 **Validação:** instalação reproduzível e lockfile, verificação de tipos, Biome,
 build da web e execução de web/API/comunicação local, conforme introduzidos.
 

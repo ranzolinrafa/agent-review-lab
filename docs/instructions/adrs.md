@@ -14,7 +14,10 @@ Em caso de dúvida, discutir sua relevância antes de escrever.
 ## Processo
 
 1. Apresentar contexto, alternativas e consequências; obter concordância antes da implementação.
-2. Registrar a decisão, distinguindo proposta de aprovação.
+2. Registrar a decisão na etapa documental após o commit da implementação,
+   distinguindo proposta de aprovação e preservando os motivos discutidos antes
+   do código. Se a tarefa for exclusivamente documental, seguir seu próprio
+   ciclo de revisão e commit, sem exigir implementação.
 3. Consultar as ADRs relacionadas antes de alterar a área afetada.
 
 Registros retrospectivos devem ser identificados, sem inventar datas ou justificativas.

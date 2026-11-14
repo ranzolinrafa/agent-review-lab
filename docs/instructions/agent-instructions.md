@@ -9,6 +9,22 @@
 5. **Concordância:** aguardar o usuário sinalizar compreensão e concordância.
 6. **Implementação:** executar somente o passo combinado.
 7. **Validação e revisão:** observar o resultado e explicar o que foi verificado.
+8. **Aprovação e commit da implementação:** aguardar a revisão e aprovação do
+   usuário; apresentar o conteúdo e a mensagem e obter autorização explícita para
+   criar o commit dos arquivos do projeto.
+9. **Documentação e commit documental:** somente após concluir o desenvolvimento
+   do checkpoint e criar seu commit, atualizar a documentação pertinente e o
+   progresso; revisar e obter autorização explícita para um commit separado.
+
+Durante o desenvolvimento do checkpoint, manter o diff focado nos arquivos do
+projeto, incluindo os testes pertinentes. Adiar alterações em `docs/`, READMEs e
+instruções de agentes para a etapa documental, sem misturá-las ao commit de
+implementação. As explicações, propostas e acordos anteriores à implementação
+continuam acontecendo na conversa; registrar o resultado na etapa documental.
+Não avançar ao próximo passo enquanto o fechamento documental estiver pendente.
+
+Tarefas exclusivamente documentais, como planejamento ou mudança de metodologia,
+seguem revisão e commit próprios, sem exigir um commit de implementação vazio.
 
 Pastas, Bun/workspaces, TypeScript e Vite são passos separados. Edições dentro de
 um passo aprovado não exigem nova confirmação; novas ferramentas ou decisões, sim.
@@ -56,10 +72,11 @@ ser tratadas agora ou ficar pendentes e qual é o impacto no passo atual.
 | Demanda fora do passo atual     | Decidir juntos quando tratar; manter no progresso enquanto estiver pendente.  |
 | Correção editorial ou menor     | Corrigir no passo autorizado, sem acrescentar histórico da edição.            |
 
-Antes de implementar uma mudança relevante, obter concordância e atualizar o plano
-ou os critérios de aceite afetados. Antes de concluir o passo, conferir se o
-comportamento entregue corresponde à documentação e atualizar as referências
-afetadas. Documentação pertinente atualizada faz parte da conclusão do passo.
+Antes de implementar uma mudança relevante, obter concordância sobre o plano e
+os critérios de aceite afetados na conversa. Validar a entrega contra o que foi
+combinado. Após o commit da implementação, atualizar os documentos e referências
+afetados em etapa separada. Documentação pertinente atualizada e seu commit
+autorizado fazem parte da conclusão do checkpoint.
 
 Manter uma fonte por informação, conforme a organização dos documentos. Revisar
 notas conceituais se algum exemplo deixar de ser válido. Git preserva versões;
@@ -80,6 +97,13 @@ nem manter pendências já resolvidas no progresso.
 
 ## Git
 
+Em checkpoints de desenvolvimento, criar primeiro o commit da implementação
+revisada e aprovada; só depois editar a documentação e criar seu commit separado.
+Apresentar conteúdo e mensagem de cada commit e obter autorização explícita para
+cada um. Aprovar um commit de implementação não autoriza o documental seguinte.
+Após os dois commits, verificar o estado da working tree e informar eventuais
+alterações restantes, sem incluir mudanças alheias ao passo.
+
 Usar Conventional Commits em inglês. A partir dos próximos encerramentos, usar
 ambos os marcos abaixo:
 
@@ -94,11 +118,14 @@ ambos os marcos abaixo:
 
 Ao concluir um milestone revisado e aprovado pelo usuário:
 
-1. Atualizar o status na tabela de milestones e o checkpoint em
-   [progresso](../project/progress.md), removendo pendências resolvidas.
-2. Conferir as alterações e executar as verificações pertinentes.
-3. Apresentar o conteúdo, a mensagem do commit de encerramento e a tag anotada
-   proposta. Aguardar autorização explícita antes de criar o commit e a tag.
+1. Concluir a revisão, as verificações e o commit autorizado da implementação do
+   último checkpoint, caso haja alterações de implementação pendentes.
+2. Na etapa documental seguinte, atualizar o status e o checkpoint em
+   [progresso](../project/progress.md), removendo pendências resolvidas, e revisar
+   os demais documentos pertinentes.
+3. Apresentar o conteúdo e a mensagem do commit documental de encerramento e a
+   tag anotada proposta, apontando para esse commit com o progresso atualizado.
+   Aguardar autorização explícita antes de criar o commit e a tag.
 4. Antes de fazer push, apresentar os commits e a tag que serão enviados e aguardar
    autorização explícita para o envio. Autorizar criação não autoriza publicação;
    push de branch não publica tags automaticamente.
@@ -121,7 +148,8 @@ pequeno ajuste editorial.
 Manter o [progresso](../project/progress.md) como retrato atual: uma tabela com o
 status de todos os milestones e outra com o checkpoint detalhado, incluindo
 milestone atual, estado, resultado relevante, próxima ação, autorização e
-pendências. Atualizar as células quando o estado mudar; não acrescentar uma
+pendências. Atualizar as células na etapa documental de cada checkpoint,
+após o commit da implementação; não acrescentar uma
 entrada para cada edição nem repetir o escopo de cada milestone.
 Remover pendências resolvidas e não repetir escopo ou procedimentos de outros arquivos.
 
