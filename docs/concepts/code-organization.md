@@ -44,8 +44,8 @@ ser consultado com `bun pm cache`. A web ainda não declara dependências extern
 Uma `devDependency` declara uma ferramenta necessária ao desenvolvimento do
 projeto. Uma `peerDependency` expressa uma expectativa de compatibilidade com o
 ambiente que utiliza o pacote, comum em bibliotecas. O template do Bun declara
-TypeScript como peer; a revisão da API avaliará sua classificação como ferramenta
-de desenvolvimento da aplicação. A categoria da declaração não determina sozinha
+TypeScript como peer; na API, ele foi classificado como ferramenta de
+desenvolvimento da aplicação. A categoria da declaração não determina sozinha
 a localização física dos arquivos instalados.
 
 Referência: [Workspaces do Bun](https://bun.com/docs/pm/workspaces).

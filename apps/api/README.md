@@ -14,10 +14,11 @@ O template vazio de `bun init` criou `index.ts` e `tsconfig.json` e acrescentou 
 script `typecheck` ao manifesto. O ponto de entrada imprime uma mensagem no
 terminal e encerra; ainda não existe servidor HTTP.
 
-O gerador declarou `@types/bun` como dependência de desenvolvimento e TypeScript
-como `peerDependency`. O lockfile resolveu as versões 1.4.4 e 7.0.2,
-respectivamente. Essas declarações e as opções do TypeScript ainda serão revisadas
-no passo específico do M2 (Estrutura e ambiente, um passo por vez).
+`@types/bun` 1.4.4 e TypeScript 7.0.2 são dependências de desenvolvimento com
+versões explícitas. A configuração foi revisada para a API no
+M2 (Estrutura e ambiente, um passo por vez), preservando as verificações de rigor
+e removendo opções desnecessárias do template. Consulte os
+[fundamentos de TypeScript](../../docs/concepts/typescript.md) para as justificativas.
 
 As exclusões do Git ficam somente no `.gitignore` da raiz; o arquivo local
 sugerido pelo gerador foi removido por decisão aprovada.
@@ -29,9 +30,11 @@ Execute na raiz do repositório:
 ```sh
 bun install --frozen-lockfile
 bun run --filter @agent-review-lab/api typecheck
+bun run --cwd apps/api tsc --noEmit
 bun run apps/api/index.ts
 ```
 
 A instalação deve respeitar o lockfile, `typecheck` deve concluir sem erros e o
 ponto de entrada deve imprimir `Hello via Bun!`. O script `typecheck` usa
-`bun check`, conforme gerado pelo Bun 1.4.4.
+`bun check`, conforme gerado pelo Bun 1.4.4. A execução direta de `tsc --noEmit`
+também foi conferida e deve concluir sem erros, normalmente sem saída no terminal.

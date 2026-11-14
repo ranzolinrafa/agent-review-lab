@@ -11,7 +11,8 @@ documentados.
 
 O repositório contém a documentação do projeto e a configuração mínima de Bun
 workspaces para `apps/web` e `apps/api`. A API tem o ponto de entrada mínimo e a
-configuração original gerados por `bun init`; a web ainda tem apenas seu manifesto.
+configuração TypeScript revisada a partir do template de `bun init`; a web ainda
+tem apenas seu manifesto.
 Ainda não há servidor HTTP ou página web.
 
 Consulte o [progresso](docs/project/progress.md) para o checkpoint atual e o
