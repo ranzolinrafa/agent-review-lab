@@ -11,8 +11,8 @@
     "apps/api": {
       "name": "@agent-review-lab/api",
       "dependencies": {
+        "@agent-review-lab/trpc": "workspace:*",
         "@trpc/server": "11.28.2",
-        "zod": "4.6.7",
       },
       "devDependencies": {
         "@types/bun": "1.4.4",
@@ -30,6 +30,7 @@
         "react-dom": "^19.3.1",
       },
       "devDependencies": {
+        "@agent-review-lab/trpc": "workspace:*",
         "@tanstack/react-query-devtools": "5.107.1",
         "@tanstack/router-plugin": "1.169.0",
         "@types/node": "^24.19.2",
@@ -40,9 +41,23 @@
         "vite": "^8.3.6",
       },
     },
+    "packages/trpc": {
+      "name": "@agent-review-lab/trpc",
+      "version": "0.1.0",
+      "dependencies": {
+        "@trpc/server": "11.28.2",
+        "zod": "4.6.7",
+      },
+      "devDependencies": {
+        "@types/bun": "1.4.4",
+        "typescript": "7.0.2",
+      },
+    },
   },
   "packages": {
     "@agent-review-lab/api": ["@agent-review-lab/api@workspace:apps/api"],
+
+    "@agent-review-lab/trpc": ["@agent-review-lab/trpc@workspace:packages/trpc"],
 
     "@agent-review-lab/web": ["@agent-review-lab/web@workspace:apps/web"],
 

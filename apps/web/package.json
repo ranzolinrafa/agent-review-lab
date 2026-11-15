@@ -18,6 +18,7 @@
     "react-dom": "^19.3.1"
   },
   "devDependencies": {
+    "@agent-review-lab/trpc": "workspace:*",
     "@tanstack/react-query-devtools": "5.107.1",
     "@tanstack/router-plugin": "1.169.0",
     "@types/node": "^24.19.2",

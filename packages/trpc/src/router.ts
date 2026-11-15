@@ -1,5 +1,5 @@
-import { greetingRouter } from "./modules/greeting/router";
-import { router } from "./trpc";
+import { greetingRouter } from "./routers/greeting.js";
+import { router } from "./trpc.js";
 
 export const appRouter = router({
   greeting: greetingRouter,

@@ -1,8 +1,9 @@
 import { describe, expect, test } from "bun:test";
 import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
 import { z } from "zod";
-import { greetingRouter } from "./modules/greeting/router";
-import { publicProcedure, router } from "./trpc";
+import type { Context } from "../src/context.js";
+import { greetingRouter } from "../src/routers/greeting.js";
+import { publicProcedure, router } from "../src/trpc.js";
 
 const testRouter = router({
   greeting: greetingRouter,
@@ -36,7 +37,11 @@ function requestProcedure(path: string, input?: unknown) {
     endpoint: "/trpc",
     req: new Request(url.toString()),
     router: testRouter,
-    createContext: () => ({}),
+    createContext: (): Context => ({
+      greeting: {
+        hello: async ({ name }) => ({ message: `Olá, ${name}!` }),
+      },
+    }),
   });
 }
 

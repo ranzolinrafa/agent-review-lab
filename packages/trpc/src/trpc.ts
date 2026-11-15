@@ -1,5 +1,6 @@
 import { initTRPC } from "@trpc/server";
 import { z } from "zod";
+import type { Context } from "./context.js";
 
 type ValidationIssue = {
   path: (string | number)[];
@@ -7,7 +8,7 @@ type ValidationIssue = {
   message: string;
 };
 
-const t = initTRPC.create({
+const t = initTRPC.context<Context>().create({
   errorFormatter({ shape, error }) {
     const validationIssues: ValidationIssue[] | null =
       error.code === "BAD_REQUEST" && error.cause instanceof z.ZodError

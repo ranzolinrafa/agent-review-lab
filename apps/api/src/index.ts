@@ -1,5 +1,6 @@
+import { appRouter, type Context } from "@agent-review-lab/trpc";
 import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
-import { appRouter } from "./router";
+import { greetingService } from "./modules/greeting/service";
 
 const server = Bun.serve({
   hostname: "127.0.0.1",
@@ -17,7 +18,7 @@ const server = Bun.serve({
         endpoint: "/trpc",
         req: request,
         router: appRouter,
-        createContext: () => ({}),
+        createContext: (): Context => ({ greeting: greetingService }),
         onError({ error, path }) {
           if (error.code === "INTERNAL_SERVER_ERROR") {
             console.error(
