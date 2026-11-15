@@ -18,6 +18,14 @@ const server = Bun.serve({
         req: request,
         router: appRouter,
         createContext: () => ({}),
+        onError({ error, path }) {
+          if (error.code === "INTERNAL_SERVER_ERROR") {
+            console.error(
+              `Internal error in ${path ?? "unknown procedure"}`,
+              error,
+            );
+          }
+        },
       });
     }
 

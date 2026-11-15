@@ -1,6 +1,5 @@
-import { TRPCClientError } from "@trpc/client";
 import { useState } from "react";
-import { api } from "../../../shared/api/trpc";
+import { api, isApiClientError } from "../../../shared/api/trpc";
 import heroImg from "./assets/hero.png";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "./assets/vite.svg";
@@ -24,9 +23,10 @@ export function HomePage() {
       setApiResult({ status: "success", message: result.message });
     } catch (error) {
       const message =
-        error instanceof TRPCClientError && error.data?.code === "BAD_REQUEST"
-          ? "Informe um nome com pelo menos um caractere que não seja espaço."
-          : "Não foi possível consultar a API. Verifique se ela está em execução e tente novamente.";
+        isApiClientError(error) && error.data
+          ? (error.data.validationIssues?.[0]?.message ?? error.message)
+          : "Não foi possível consultar a API. Tente novamente.";
+
       setApiResult({ status: "error", message });
     }
   }
@@ -51,7 +51,10 @@ export function HomePage() {
           <input
             id="greeting-name"
             value={name}
-            onChange={(event) => setName(event.target.value)}
+            onChange={(event) => {
+              setName(event.target.value);
+              setApiResult({ status: "idle" });
+            }}
             disabled={apiResult.status === "loading"}
           />
           <button
