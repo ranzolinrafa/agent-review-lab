@@ -11,5 +11,8 @@ export const greetingRouter = router({
           .min(1, "Informe um nome."),
       }),
     )
-    .query(({ input }) => ({ message: `Olá, ${input.name}!` })),
+    .query(async ({ input }) => {
+      await new Promise<void>((resolve) => setTimeout(resolve, 2_000));
+      return { message: `Olá, ${input.name}!` };
+    }),
 });

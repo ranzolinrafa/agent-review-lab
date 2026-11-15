@@ -11,11 +11,13 @@
     "check": "biome check ."
   },
   "dependencies": {
+    "@tanstack/react-query": "5.107.1",
     "@trpc/client": "11.28.2",
     "react": "^19.3.1",
     "react-dom": "^19.3.1"
   },
   "devDependencies": {
+    "@tanstack/react-query-devtools": "5.107.1",
     "@types/node": "^24.19.2",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",

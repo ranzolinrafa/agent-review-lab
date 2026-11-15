@@ -1,35 +1,21 @@
+import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
-import { api, isApiClientError } from "../../../shared/api/trpc";
+import { isApiClientError } from "../../../shared/api/trpc";
+import { greetingQueryOptions } from "../api/greeting-query";
 import heroImg from "./assets/hero.png";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "./assets/vite.svg";
 import "./home-page.css";
 
-type ApiResult =
-  | { status: "idle" }
-  | { status: "loading" }
-  | { status: "success"; message: string }
-  | { status: "error"; message: string };
-
 export function HomePage() {
   const [name, setName] = useState("");
-  const [apiResult, setApiResult] = useState<ApiResult>({ status: "idle" });
-
-  async function handleApiRequest() {
-    setApiResult({ status: "loading" });
-
-    try {
-      const result = await api.greeting.hello.query({ name });
-      setApiResult({ status: "success", message: result.message });
-    } catch (error) {
-      const message =
-        isApiClientError(error) && error.data
-          ? (error.data.validationIssues?.[0]?.message ?? error.message)
-          : "Não foi possível consultar a API. Tente novamente.";
-
-      setApiResult({ status: "error", message });
-    }
-  }
+  const [submittedName, setSubmittedName] = useState<string | null>(null);
+  const greetingQuery = useQuery(greetingQueryOptions(submittedName));
+  const error = greetingQuery.error;
+  const errorMessage =
+    isApiClientError(error) && error.data
+      ? (error.data.validationIssues?.[0]?.message ?? error.message)
+      : "Não foi possível consultar a API. Tente novamente.";
 
   return (
     <main className="home-page">
@@ -44,37 +30,34 @@ export function HomePage() {
         <form
           onSubmit={(event) => {
             event.preventDefault();
-            void handleApiRequest();
+            if (name === submittedName) {
+              void greetingQuery.refetch();
+            } else {
+              setSubmittedName(name);
+            }
           }}
         >
           <label htmlFor="greeting-name">Nome fictício</label>
           <input
             id="greeting-name"
             value={name}
-            onChange={(event) => {
-              setName(event.target.value);
-              setApiResult({ status: "idle" });
-            }}
-            disabled={apiResult.status === "loading"}
+            onChange={(event) => setName(event.target.value)}
+            disabled={greetingQuery.isFetching}
           />
           <button
             type="submit"
             className="greeting-submit"
-            disabled={apiResult.status === "loading"}
+            disabled={greetingQuery.isFetching}
           >
-            {apiResult.status === "loading"
-              ? "Consultando..."
-              : "Consultar saudação"}
+            {greetingQuery.isFetching ? "Consultando..." : "Consultar saudação"}
           </button>
         </form>
         <p role="status">
-          {apiResult.status === "idle" && "Aguardando consulta."}
-          {apiResult.status === "loading" && "Aguardando resposta da API..."}
-          {apiResult.status === "success" && apiResult.message}
+          {submittedName === null && "Aguardando consulta."}
+          {greetingQuery.isFetching && "Aguardando resposta da API..."}
+          {!greetingQuery.isFetching && greetingQuery.data?.message}
         </p>
-        {apiResult.status === "error" && (
-          <p role="alert">{apiResult.message}</p>
-        )}
+        {greetingQuery.isError && <p role="alert">{errorMessage}</p>}
       </section>
     </main>
   );
