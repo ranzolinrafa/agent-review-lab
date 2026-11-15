@@ -1,11 +1,120 @@
 # Visão geral do sistema
 
-Visão conceitual revisada no M1 (Visão conceitual do sistema).
-Descreve o fluxo de crédito previsto, ainda não implementado. Os comandos da
-fundação executável do M2 (Estrutura e ambiente, um passo por vez) estão no
-[README](../../README.md).
+O fluxo de crédito foi revisado conceitualmente no M1 (Visão conceitual do
+sistema) e ainda não foi implementado. A demonstração do M3 (Primeira comunicação
+tipada), descrita a seguir, exercita a comunicação com uma saudação. Comandos de
+instalação, execução e verificação ficam no [README](../../README.md).
 
-## Fluxo completo do caminho feliz
+## Demonstração implementada no M3
+
+### Fronteiras e contrato público
+
+`apps/api` inicia o servidor Bun, conecta o Fetch Adapter e fornece os serviços.
+`packages/trpc` contém routers, validação, formato de erros e interfaces do
+contexto. `apps/web` apresenta a interface, acompanha consultas e navega por URL.
+
+O pacote exporta `appRouter` e os tipos `AppRouter`, `Context` e `GreetingService`.
+A entrada `@agent-review-lab/trpc/schemas` exporta o schema e os tipos de entrada
+e saída da saudação, sem importar o router. O build do próprio pacote produz
+JavaScript e declarações em seu `dist`; a web consome as declarações por
+`import type`, sem analisar o fonte da API.
+
+A API fornece um objeto compatível com `GreetingService` em `createContext`:
+
+```ts
+createContext: (): Context => ({ greeting: greetingService })
+```
+
+A interface do serviço é definida no pacote; sua implementação fica em
+`apps/api/src/modules/greeting/service.ts`. O contexto criado por requisição
+reutiliza a mesma referência de serviço. O pacote não importa a aplicação API.
+Essa divisão prepara as próximas operações sem implementar módulos de crédito.
+Os motivos e a reavaliação prevista estão na
+[ADR 0002](../adr/0002-trpc-package-and-service-context.md).
+
+### Caminho da chamada
+
+```text
+Home ou página de saudação
+→ useQuery observa ["greeting", nome submetido]
+→ queryFn chama o cliente tRPC, quando a busca é necessária
+→ HTTP /api/trpc/greeting.hello
+→ proxy Vite remove /api
+→ Bun recebe /trpc/greeting.hello
+→ Fetch Adapter conecta a requisição ao router e cria o contexto
+→ Zod valida a entrada
+→ procedure chama ctx.greeting.hello(input)
+→ serviço da API aguarda dois segundos e produz a mensagem
+→ resposta HTTP retorna ao cliente e ao cache
+→ componente apresenta o resultado
+```
+
+O atraso pertence ao serviço da API; um resultado reaproveitado do cache não
+aguarda esse atraso. O `GET /` técnico continua respondendo `Hello World!`.
+
+A operação `greeting.hello` é uma query com entrada `{ name: string }` e saída
+`{ message: string }`. O schema remove espaços das extremidades e exige pelo menos
+um caractere. Digitar `123` no campo HTML produz uma string válida; enviar o número
+`123` por HTTP é uma entrada inválida.
+
+### Erros
+
+A validação falha antes da chamada ao serviço e produz `BAD_REQUEST`, com HTTP
+`400`. O formatter fornece uma lista de problemas independente de formulários:
+
+```ts
+validationIssues: [
+  { path: ["name"], code: "invalid_type", message: "O nome deve ser um texto." }
+]
+```
+
+`path` preserva campos e posições de listas; `[]` identifica a entrada inteira.
+Não é o mesmo `path` de `error.data`, que identifica a procedure. Erros sem causa
+Zod de entrada têm `validationIssues: null`. Erros internos recebem
+`INTERNAL_SERVER_ERROR`, HTTP `500` e mensagem genérica, sem stack na resposta;
+o adaptador registra os detalhes no terminal.
+
+A home e a página de saudação mostram uma única mensagem: primeiro problema de
+validação, mensagem da API ou fallback genérico. O tratamento detalhado de campos
+fica para uma necessidade futura, mantendo a demonstração pequena.
+
+### Consulta, cache e navegação
+
+Na home, `name` controla o campo e `submittedName` identifica o nome confirmado.
+`null` mantém a consulta inicial desabilitada; enviar uma string vazia permite
+observar a validação da API. Editar o campo não muda a consulta observada.
+Enviar outro nome muda a chave; enviar novamente o mesmo nome chama `refetch`
+explicitamente, mesmo se o dado estiver fresh.
+
+A consulta considera o dado atualizado por 30 segundos e desativa tentativas
+automáticas. O QueryProvider mantém uma instância de QueryClient acima do Router.
+Os dados permanecem no cache durante a navegação; o estado local da home reinicia
+quando ela é desmontada. A interface usa `isFetching` para indicar busca e esconde
+a saudação durante esse período, embora dados anteriores possam continuar no cache.
+
+O Router conecta `/` à home e `/greetings/$name` à página de saudação. A rota extrai
+`name` e o passa por props; a página observa as mesmas opções de consulta. Rotas
+por arquivos em `app/routes` geram `app/routeTree.gen.ts` pelo plugin do Vite.
+O arquivo é versionado e excluído do Biome; a
+[ADR 0003](../adr/0003-file-based-routing.md) registra a escolha e sua revisão futura.
+Caminhos não registrados mostram o
+conteúdo de página não encontrada; em desenvolvimento, Vite ainda fornece o HTML
+da aplicação para o Router decidir o conteúdo no navegador.
+
+O Query Devtools está disponível em desenvolvimento. A invalidação foi observada
+pelo painel: consultas ativas buscam novamente; inativas ficam marcadas para uma
+próxima observação. Mutations e sua ligação com invalidação foram estudadas
+conceitualmente; não foi criada uma mutation artificial para a saudação.
+
+### Validação da fronteira
+
+O pacote foi empacotado localmente e instalado em um consumidor temporário fora
+do monorepo. As chamadas foram verificadas por TypeScript sem fontes da API, o
+schema executou no Node e foi empacotado para navegador sem o router. O consumidor
+usou bibliotecas TypeScript `ESNext` e `DOM`, necessárias aos tipos utilizados pelo
+tRPC. Não houve publicação em registro nem deploy.
+
+## Fluxo de crédito previsto
 
 Este é o mapa de ponta a ponta. As seções seguintes detalham a comunicação e as
 responsabilidades de cada parte. Contratos, estados e configurações exatos serão

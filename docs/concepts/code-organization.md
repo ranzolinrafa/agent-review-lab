@@ -1,7 +1,8 @@
 # Monorepo e Feature-Sliced Design
 
-Fundamentos revisados no M1 (Visão conceitual do sistema). As divisões internas
-abaixo são exemplos para aprendizado, não uma estrutura aprovada para criação.
+Fundamentos introduzidos no M1 (Visão conceitual do sistema) e aplicados
+progressivamente no M3 (Primeira comunicação tipada). A árvore mais preenchida
+abaixo continua ilustrativa; não é uma lista de pastas a criar.
 
 ## Monorepo
 
@@ -9,15 +10,18 @@ Monorepo reúne projetos no mesmo repositório. Facilita revisar mudanças que
 envolvem frontend, backend e documentação. Não une os processos em execução:
 navegador e servidor continuam separados e se comunicam pela rede.
 
-No projeto, `apps/web` contém o frontend React, `apps/api` o servidor Bun, e `docs`
-a documentação. Cada aplicação tem manifesto, dependências e comandos próprios;
+No projeto, `apps/web` contém o frontend React, `apps/api` o servidor Bun,
+`packages/trpc` a biblioteca de comunicação e `docs` a documentação. Cada
+workspace tem manifesto, dependências e comandos próprios;
 Bun workspaces administra o conjunto a partir da raiz. A organização foi
 configurada no M2 (Estrutura e ambiente, um passo por vez), com justificativas na
-[ADR 0001](../adr/0001-monorepo-with-bun-workspaces.md).
+[ADR 0001](../adr/0001-monorepo-with-bun-workspaces.md). A fronteira do pacote
+está na [ADR 0002](../adr/0002-trpc-package-and-service-context.md), e a escolha de
+rotas por arquivos, na [ADR 0003](../adr/0003-file-based-routing.md).
 
 ## Manifests e instalação com Bun workspaces
 
-O `package.json` da raiz declara `workspaces: ["apps/*"]`. Cada diretório
+O `package.json` da raiz declara `workspaces: ["apps/*", "packages/*"]`. Cada diretório
 selecionado que contém um manifesto com nome identifica um projeto do conjunto.
 Cada aplicação declara suas próprias dependências e scripts quando introduzidos;
 a raiz pode declarar ferramentas comuns e comandos de coordenação.
@@ -66,6 +70,27 @@ Referências: [Workspaces](https://bun.com/docs/pm/workspaces),
 [instalações isoladas](https://bun.com/docs/pm/isolated-installs) e
 [cache global](https://bun.com/docs/pm/global-cache).
 
+## Pacote compilado e fronteira de tipos
+
+Um pacote pode disponibilizar JavaScript e declarações TypeScript por entradas
+públicas no campo `exports` do manifesto. Um consumidor importa pelo nome do
+pacote, sem conhecer sua organização interna. `workspace:*` declara uma
+dependência de um workspace local; não elimina a necessidade de preparar seus
+artefatos quando a entrada aponta para `dist`.
+
+`import type` desaparece do JavaScript, mas o compilador ainda precisa resolver o
+tipo. Apontar para fontes permite que ele siga os arquivos internos do produtor;
+apontar para declarações `.d.ts` estabelece uma fronteira de compilação. Isso não
+elimina a dependência do contrato nem a necessidade de verificar compatibilidade.
+
+O build pertence ao pacote e escreve em seu próprio `dist`. No projeto, ele gera
+JavaScript e declarações; o desenvolvimento conjunto prepara a primeira saída e
+mantém o compilador em watch. Comandos atuais ficam no [README](../../README.md).
+
+Schemas são valores executáveis. Uma entrada específica para schemas permite
+importá-los no navegador sem importar o router do servidor. Exportar um tipo
+não substitui disponibilizar o JavaScript de um schema usado em runtime.
+
 ## Layers, slices e segments
 
 FSD é uma metodologia de organização do frontend por responsabilidades e assuntos
@@ -101,6 +126,10 @@ app → pages → widgets → features → entities → shared
 Módulos podem importar camadas inferiores sem passar por todas as intermediárias.
 Slices de uma mesma camada não devem importar diretamente umas às outras.
 `app` e `shared` são exceções à divisão em slices: contêm segmentos diretamente.
+As camadas são irmãs em `src`: `app` representa composição e inicialização, não
+um diretório que contém todas as outras camadas. Arquivos de rota em `app` podem
+conhecer os nomes das páginas e conectá-las às URLs, delegando sua apresentação
+a `pages`.
 
 ## Exemplo mais preenchido
 
@@ -183,12 +212,14 @@ chave e função de busca. O exemplo pressupõe cliente e imports configurados.
 Executor, regras da análise e memória do servidor ficam em `apps/api`. Lógica de
 apresentação no frontend não executa a análise. Schemas de formulário podem validar
 campos no navegador, mas não substituem a validação na API. Eventual compartilhamento
-de schemas será avaliado posteriormente.
+de schemas de solicitações será avaliado ao definir seus contratos.
 
 ## Adoção no projeto
 
-Usaremos FSD adaptado e progressivo, justificando divisões conforme surgirem
-necessidades no M4 (Solicitações e backoffice básico). Não criar esta árvore
-antecipadamente nem confundir organização de arquivos com transporte de dados.
+O M3 (Primeira comunicação tipada) introduziu `app`, `pages` e `shared`. A
+configuração de rotas conecta as páginas por suas APIs públicas; páginas irmãs
+não importam implementações umas das outras. O M4 (Solicitações e backoffice
+básico) continuará a adoção conforme surgirem assuntos de produto. Não criar
+a árvore ilustrativa antecipadamente nem confundir pastas com transporte de dados.
 
 Referência: [Visão geral oficial do FSD](https://feature-sliced.design/docs/get-started/overview).

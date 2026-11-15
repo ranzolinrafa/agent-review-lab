@@ -111,3 +111,11 @@ iniciou as aplicações e encerrou seus processos com `Ctrl+C`.
 
 Os comandos atuais estão no [README da raiz](../../README.md) e nos READMEs da
 [API](../../apps/api/README.md) e da [web](../../apps/web/README.md).
+
+## Evolução no M3 (Primeira comunicação tipada)
+
+A [ADR 0002](0002-trpc-package-and-service-context.md) complementa a organização
+com `packages/trpc`, seu build e os serviços fornecidos pela API. O manifesto da
+raiz agora também seleciona `packages/*`. Os exemplos anteriores preservam a
+configuração aprovada no M2 (Estrutura e ambiente, um passo por vez); os comandos
+vigentes continuam no README da raiz.

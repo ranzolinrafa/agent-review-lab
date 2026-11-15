@@ -1,56 +1,60 @@
 # API
 
-Servidor do Agent Review Lab, executado pelo Bun.
-
-Esta aplicação receberá operações da interface, manterá os dados em memória e
-executará as análises determinísticas, disponibilizando seu progresso ao navegador.
-
-O manifesto identifica esta aplicação como o workspace privado
+Servidor Bun do Agent Review Lab, identificado pelo workspace privado
 `@agent-review-lab/api`. Instalação e lockfile são coordenados pela raiz.
 
-## Configuração atual
+## Responsabilidades atuais
 
-O ponto de entrada `index.ts` inicia o servidor com `Bun.serve` em
-`http://127.0.0.1:3000/`. A rota `GET /` responde `Hello World!`; caminhos
-inexistentes respondem `404`. O processo permanece ativo aguardando requisições.
+`src/index.ts` inicia `Bun.serve` em `http://127.0.0.1:3000/` e conecta o Fetch
+Adapter ao `appRouter` importado de `@agent-review-lab/trpc`. O contexto fornece a
+implementação de `src/modules/greeting/service.ts` às procedures do pacote.
 
-`@types/bun` 1.4.4 e TypeScript 7.0.2 são dependências de desenvolvimento com
-versões explícitas. A configuração foi revisada para a API no
-M2 (Estrutura e ambiente, um passo por vez), preservando as verificações de rigor
-e removendo opções desnecessárias do template. As opções efetivas estão no
-`tsconfig.json` da aplicação.
+O serviço retorna a saudação após dois segundos. O schema da entrada e o router
+ficam no pacote; o serviço e os futuros módulos de negócio permanecem na API.
+O [percurso da chamada](../../docs/system/overview.md#demonstração-implementada-no-m3)
+detalha essa fronteira e o contrato de erros.
 
-As exclusões do Git ficam somente no `.gitignore` da raiz; o arquivo local
-sugerido pelo gerador foi removido por decisão aprovada.
+`GET /` retorna `Hello World!`; `/trpc` recebe as operações tRPC. Caminhos HTTP
+não reconhecidos retornam `404`. Erros internos das procedures são registrados
+no terminal; o cliente recebe uma mensagem genérica.
 
-## Verificação
+## Executar e verificar
 
-Execute na raiz do repositório:
+Para desenvolvimento integrado, prefira `bun run dev` na raiz. Para operar somente
+a API, execute na raiz:
 
 ```sh
 bun install --frozen-lockfile
+bun run build:trpc
 bun run --filter @agent-review-lab/api typecheck
-bun run --cwd apps/api tsc --noEmit
 bun run --filter @agent-review-lab/api check
+bun test ./apps/api/src
 bun run --filter @agent-review-lab/api dev
 ```
 
-A instalação deve respeitar o lockfile, as verificações devem passar e `dev` deve
-imprimir o endereço do servidor. `dev` usa `bun --watch index.ts`, reiniciando
-após mudanças; encerre com `Ctrl+C`. Para executar sem observar mudanças, use
-`bun run --filter @agent-review-lab/api start`.
+As verificações devem passar e `dev` deve imprimir o endereço do servidor.
+Ele usa `bun --watch src/index.ts`; para executar sem watch, use
+`bun run --filter @agent-review-lab/api start`. Encerre com `Ctrl+C`.
 
-Em outro terminal, execute:
+O teste da API verifica o serviço real. Os testes de router, contexto e erros HTTP
+estão em `packages/trpc/tests` e podem ser executados com
+`bun test ./packages/trpc/tests` na raiz.
+
+Em outro terminal:
 
 ```sh
 curl -i http://127.0.0.1:3000/
 curl -i http://127.0.0.1:3000/inexistente
+curl -i --get --data-urlencode 'input={"name":"Rafael"}' http://127.0.0.1:3000/trpc/greeting.hello
 ```
 
-Confira status `200` com `Hello World!` e `404` com `Not Found`. A
-[web](../web/README.md#consulta-à-api) acessa a rota inicial pelo proxy do Vite.
+Espere `200` com `Hello World!`, `404` com `Not Found` e `200` com a saudação,
+respectivamente. O contrato tRPC é o mesmo acessado pela web através do proxy.
 
-`check` chama o Biome instalado na raiz, abrangendo somente a API. `typecheck`
-usa `bun --check`, sem arquivo de entrada, para verificar tipos sem executar o
-servidor. Essa forma evita que `bun check` resolva o script homônimo de Biome.
-`tsc --noEmit` também foi conferido e deve passar, normalmente sem saída.
+`typecheck` usa `bun --check`, sem executar o servidor. O TypeScript também pode
+ser acionado com `bun run --cwd apps/api tsc --noEmit`. Os tipos do Bun pertencem
+ao ambiente da API; a compilação pública do pacote tRPC não depende deles.
+
+Se alterar o pacote em uma execução individual, recompile com `bun run build:trpc`
+ou mantenha seu watcher ativo com `bun run --filter @agent-review-lab/trpc dev`.
+O comando integrado da raiz já coordena os três processos.

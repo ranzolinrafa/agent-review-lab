@@ -45,6 +45,8 @@ Frontend, backend e documentação ficarão no mesmo repositório:
 apps/
   web/    Interface React executada no navegador
   api/    Servidor executado pelo Bun
+packages/
+  trpc/   Routers, schemas e interfaces públicas da comunicação
 docs/     Guia, progresso, conceitos e decisões
 ```
 
@@ -56,8 +58,10 @@ administrará dependências e comandos, sem Nx ou Turborepo inicialmente.
 manifesto; a raiz coordenará os workspaces, e o lockfile registrará a resolução
 das dependências. A configuração será feita e explicada em M2 (Estrutura e ambiente, um passo por vez).
 
-Não criar `packages/contracts` antecipadamente. Ao estudar tipos e schemas,
-avaliaremos se existe código compartilhado que justifique um pacote.
+No M3 (Primeira comunicação tipada), a avaliação da fronteira de tipos levou a
+`packages/trpc`: pacote com fonte e build próprios, consumido pela API em runtime
+e pela web como declarações de tipos. Schemas públicos têm uma entrada separada.
+Não criar outros pacotes de contratos sem uma necessidade concreta.
 
 ### Responsabilidades previstas
 
