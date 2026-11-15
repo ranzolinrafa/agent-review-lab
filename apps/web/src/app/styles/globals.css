@@ -40,3 +40,12 @@ body {
 p {
   margin: 0;
 }
+
+a {
+  color: var(--accent);
+}
+
+.not-found {
+  padding: 32px 20px;
+  text-align: center;
+}

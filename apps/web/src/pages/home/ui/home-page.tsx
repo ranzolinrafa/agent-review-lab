@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
+import { Link } from "@tanstack/react-router";
 import { useState } from "react";
+import { greetingQueryOptions } from "../../../shared/api/greeting-query";
 import { isApiClientError } from "../../../shared/api/trpc";
-import { greetingQueryOptions } from "../api/greeting-query";
 import heroImg from "./assets/hero.png";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "./assets/vite.svg";
@@ -58,6 +59,11 @@ export function HomePage() {
           {!greetingQuery.isFetching && greetingQuery.data?.message}
         </p>
         {greetingQuery.isError && <p role="alert">{errorMessage}</p>}
+        {greetingQuery.isSuccess && submittedName !== null && (
+          <Link to="/greetings/$name" params={{ name: submittedName }}>
+            Abrir saudação por URL
+          </Link>
+        )}
       </section>
     </main>
   );

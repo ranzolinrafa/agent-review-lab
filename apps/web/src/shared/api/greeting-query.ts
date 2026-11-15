@@ -1,5 +1,5 @@
 import { queryOptions } from "@tanstack/react-query";
-import { api } from "../../../shared/api/trpc";
+import { api } from "./trpc";
 
 export function greetingQueryOptions(name: string | null) {
   return queryOptions({
